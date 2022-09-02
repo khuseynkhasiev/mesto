@@ -1,10 +1,33 @@
 /*page*/
 .page{
     background: #000000;
+    min-height: 1217px;
 }
 /*main-page*/
 .main-page{
     max-width: 1280px;
     width: 100%;
     background: #000000;
+    margin: auto;
+    padding-top: 45px;
+}
+
+/*header*/
+.header{
+    max-width: 880px;
+    width: 100%;
+    min-height: 74px;
+    margin: auto;
+}
+.header__logo{
+    background-image: url(/images/logo.svg);
+    max-width: 142px;
+    width: 100%;
+    min-height: 33px;
+}
+.header__line{
+    width: 100%;
+    margin-top: 41px;
+    border-bottom: 1px solid #545454;
+    opacity: .7;
 }
