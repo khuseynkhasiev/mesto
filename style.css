@@ -1,0 +1,10 @@
+/*page*/
+.page{
+    background: #000000;
+}
+/*main-page*/
+.main-page{
+    max-width: 1280px;
+    width: 100%;
+    background: #000000;
+}
