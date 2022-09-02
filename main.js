@@ -1,0 +1,1 @@
+let likeActive = document.querySelector('.elements__like');
