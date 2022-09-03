@@ -9,7 +9,6 @@
     width: 100%;
     background: #000000;
     margin: auto;
-    padding-top: 45px;
 }
 
 /*header*/
@@ -18,6 +17,12 @@
     width: 100%;
     min-height: 74px;
     margin: auto;
+    padding: 45px 0 calc(36.25px / 2);
+}
+@media screen and (max-width: 1023px) {
+    .header{
+        padding: 28px 0 calc(38.25px / 2);
+    }
 }
 .header__logo{
     background-image: url(/images/logo.svg);
@@ -25,11 +30,26 @@
     width: 100%;
     min-height: 33px;
 }
+@media screen and (max-width: 1023px) {
+    .header__logo{
+        margin-left: 27px;
+        max-width: 103.74px;
+        width: 100%;
+        min-height: 24.4px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
 .header__line{
     width: 100%;
     margin-top: 41px;
     border-bottom: 1px solid #545454;
     opacity: .7;
+}
+@media screen and (max-width: 1023px) {
+    .header__line{
+        margin-top: 31.6px;
+    }
 }
 
 /*main*/
@@ -43,6 +63,7 @@
     grid-template-columns: minmax(auto, 120px) 1fr minmax(auto, 150px);
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content);
     align-items: center;
+    padding: calc(36.25px / 2) 0 calc(47.25px / 2);
 }
 .profile__avatar{
     max-width: 120px;
