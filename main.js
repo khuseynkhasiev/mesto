@@ -13,15 +13,10 @@ function formEditToggle() {
     formEdit.classList.toggle('edit-form_opened');
 }
 
-//обновление данных формы редактирования
-function updateFormEdit() {
-    editFormName.value = profileTitle.innerText;
-    editFormSubname.value = profileSubtext.innerText;
-}
-
-//открытие формы редактирования
+//открытие формы редактирования с сохранением новых значений
 profileEditButton.addEventListener('click', () =>{
-    updateFormEdit();
+    editFormName.value = profileTitle.innerText;
+    editFormSubname.value = profileSubtext.innerText;    
     formEditToggle();
 });
 
@@ -43,5 +38,18 @@ const elLike = document.querySelectorAll('.elements__like');
 for (let i = 0; i < elLike.length; i++) {
     elLike[i].addEventListener('click', () => {
         elLike[i].classList.toggle('elements__like_active');
-    })
+    });
+}
+
+const elTitle = document.querySelectorAll('.elements__title');
+let elTitleStr = '';
+
+// Обрезаем строку больше 12 символов
+for (let i = 0; i < elTitle.length; i++) {
+    elTitleStr = elTitle[i].textContent;
+
+    if (elTitleStr.length > 12){
+        console.log(elTitleStr);
+        elTitle[i].textContent = elTitleStr.slice(0, 11) + '...';
+    }
 }
