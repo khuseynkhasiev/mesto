@@ -1,15 +1,20 @@
 .profile__title-container{
     display: flex;
-    padding: 0 244px 0 30px;
+    max-width: 550px;
     column-gap: 18px;
     align-items: center;
+    justify-content: flex-start;
     margin-top: calc(62px - 36.25px);
 }
 @media screen and (max-width: 1023px) {
     .profile__title-container{
         grid-area: 2 / 1 / 2 / 1;
-        padding: 0;
         column-gap: 10px;
         margin-top: 26px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .profile__title-container{
+        max-width: 290px;
     }
 }

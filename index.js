@@ -32,7 +32,6 @@ editFormButton.addEventListener('click', () =>{
     formEditToggle();
 });
 
-
 const elLike = document.querySelectorAll('.elements__like');
 // реализация лайка для фотографий
 for (let i = 0; i < elLike.length; i++) {
@@ -41,10 +40,9 @@ for (let i = 0; i < elLike.length; i++) {
     });
 }
 
+/* Обрезаем строку больше 12 символов
 const elTitle = document.querySelectorAll('.elements__title');
 let elTitleStr = '';
-
-// Обрезаем строку больше 12 символов
 for (let i = 0; i < elTitle.length; i++) {
     elTitleStr = elTitle[i].textContent;
 
@@ -52,4 +50,4 @@ for (let i = 0; i < elTitle.length; i++) {
         console.log(elTitleStr);
         elTitle[i].textContent = elTitleStr.slice(0, 11) + '...';
     }
-}
+} */
