@@ -1,4 +1,4 @@
-.profile__subtext{
+.profile__job{
     grid-area: 2 / 2 / 2 / 2;
     margin: 0;
     font-family: 'Inter';
@@ -13,13 +13,13 @@
     max-width: 550px;
 }
 @media screen and (max-width: 1023px) {
-    .profile__subtext{
+    .profile__job{
         grid-area: 3 / 1 / 3 / 1;
         margin-top: 14px;
     }
 }
 @media screen and (max-width: 767px) {
-    .profile__subtext{
+    .profile__job{
         font-size: 14px;
         line-height: 17px;
         max-width: 290px;

@@ -1,4 +1,4 @@
-.edit-form__close{
+.popup__close{
     background-image: url(../../../images/Close\ Icon.svg);
     width: 32px;
     height: 32px;
@@ -6,14 +6,14 @@
     right: -40px;
     position: absolute;
     background-size: contain;
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
-.edit-form__close:hover{
+.popup__close:hover{
     opacity: 0.6;
     cursor: pointer;
 }
 @media screen and (max-width: 1023px) {
-    .edit-form__close{
+    .popup__close{
         width: 20px;
         height: 20px;
         top: -36px;

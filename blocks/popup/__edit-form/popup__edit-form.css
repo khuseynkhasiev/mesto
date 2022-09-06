@@ -1,10 +1,10 @@
-.edit-form__container{
+.popup__edit-form{
     max-width: 358px;
     width: 100%;
     margin: auto;
 }
 @media screen and (max-width: 1023px) {
-    .edit-form__container{
+    .popup__edit-form{
         max-width: 238px;
         width: 100%;
     }

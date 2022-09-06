@@ -1,35 +1,36 @@
-const formEdit = document.querySelector('.edit-form');
+const popup = document.querySelector('.popup');
+const popupContainer = popup.querySelector('.popup__container');
+const popupClose = popup.querySelector('.popup__close');
+const nameInput = popup.querySelector('.popup__name-input');
+const jobInput = popup.querySelector('.popup__job-input');
+const popupSaveButton = popup.querySelector('.popup__save-btn');
+
 const profileEditButton = document.querySelector('.profile__edit-button');
-const editFormClose = formEdit.querySelector('.edit-form__close');
-
-const editFormName = formEdit.querySelector('.edit-form__name');
-const editFormSubname = formEdit.querySelector('.edit-form__subname');
-const editFormButton = formEdit.querySelector('.edit-form__button');
 const profileTitle = document.querySelector('.profile__title');
-const profileSubtext = document.querySelector('.profile__subtext');
+const profileJob = document.querySelector('.profile__job');
 
-// функция открытия и закрытия формы редактирования
-function formEditToggle() {
-    formEdit.classList.toggle('edit-form_opened');
+// функция открытия и закрытия popup
+function popupToggle() {
+   popup.classList.toggle('popup_opened');
 }
 
-//открытие формы редактирования с сохранением новых значений
+//открытие popup редактирования с сохранением новых значений
 profileEditButton.addEventListener('click', () =>{
-    editFormName.value = profileTitle.innerText;
-    editFormSubname.value = profileSubtext.innerText;    
-    formEditToggle();
+    nameInput.value = profileTitle.innerText;
+    jobInput.value = profileJob.innerText;    
+    popupToggle();
 });
 
-//закрытие формы редактирования
-editFormClose.addEventListener('click', () =>{
-    formEditToggle();
+//закрытие popup
+popupClose.addEventListener('click', () =>{
+    popupToggle();
 });
 
-// сохранение внесенных изменений в форму редактирования
-editFormButton.addEventListener('click', () =>{
-    profileTitle.innerText = editFormName.value;
-    profileSubtext.innerText = editFormSubname.value;
-    formEditToggle();
+// сохранение внесенных изменений в popup
+popupSaveButton.addEventListener('click', () =>{
+    profileTitle.innerText = nameInput.value;
+    profileJob.innerText = jobInput.value;
+    popupToggle();
 });
 
 const elLike = document.querySelectorAll('.elements__like');
