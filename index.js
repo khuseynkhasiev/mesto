@@ -1,13 +1,34 @@
 const popup = document.querySelector('.popup');
-const popupContainer = popup.querySelector('.popup__container');
-const popupClose = popup.querySelector('.popup__close');
-const nameInput = popup.querySelector('.popup__name-input');
-const jobInput = popup.querySelector('.popup__job-input');
-const popupSaveButton = popup.querySelector('.popup__save-btn');
+const formElement = popup.querySelector('.popup__container');
+const popupClose = formElement.querySelector('.popup__close');
+const nameInput = formElement.querySelector('.popup__name-input');
+const jobInput = formElement.querySelector('.popup__job-input');
+const popupSaveButton = formElement.querySelector('.popup__save-btn');
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__job');
+
+
+
+function formSubmitHandler (evt) {
+    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+                                                // Так мы можем определить свою логику отправки.
+                                                // О том, как это делать, расскажем позже.
+
+    // Получите значение полей jobInput и nameInput из свойства value  
+    profileTitle.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    // Выберите элементы, куда должны быть вставлены значения полей
+
+    // Вставьте новые значения с помощью textContent
+}
+
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
+formElement.addEventListener('submit', formSubmitHandler); 
+
+
 
 // функция открытия и закрытия popup
 function popupToggle() {
@@ -27,11 +48,11 @@ popupClose.addEventListener('click', () =>{
 });
 
 // сохранение внесенных изменений в popup
-popupSaveButton.addEventListener('click', () =>{
+/* popupSaveButton.addEventListener('click', () =>{
     profileTitle.innerText = nameInput.value;
     profileJob.innerText = jobInput.value;
     popupToggle();
-});
+}); */
 
 const elLike = document.querySelectorAll('.elements__like');
 // реализация лайка для фотографий
