@@ -2,8 +2,8 @@
     display: grid;
     align-items: center;
     grid-template-columns: minmax(auto, max-content) 24px;
-    grid-column-gap: 18px;
-    grid-row-gap: 16px;
+    grid-column-gap: 19px;
+    grid-row-gap: 6px;
     grid-area: 1 / 2 / 3 / 2;
 }
 @media screen and (max-width: 1023px) {
@@ -11,11 +11,11 @@
         grid-area: 2 / 1 / 2 / 1;
         margin-top: 26px;
         grid-column-gap: 10px;
-        grid-row-gap: 14px;
+        grid-row-gap: 6px;
     }
 }
 @media screen and (max-width: 767px) {
     .profile__info{
-        max-width: 282px;
+        grid-template-columns: minmax(213px, max-content) 24px;
     }
 }
