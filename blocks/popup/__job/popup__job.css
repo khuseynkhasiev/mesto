@@ -1,5 +1,6 @@
-.popup__name-input{
+.popup__job{
     width: 100%;
+    margin-top: 30px;
     border: none;
     font-family: 'Inter';
     font-style: normal;
@@ -7,6 +8,7 @@
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    padding: 0;
+    padding: 0 0 13px;
     outline: none;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
 }

@@ -3,10 +3,13 @@
     width: 100%;
     min-height: 74px;
     margin: auto;
-    padding: 45px 0 calc(36.25px / 2);
+    padding-top: 45px;
+    border-bottom: 1px solid #545454;
+    opacity: .7;
 }
 @media screen and (max-width: 1023px) {
     .header{
-        padding: 28px 0 calc(38.25px / 2);
+        padding-top: 28px;
+        min-height: 56px;
     }
 }

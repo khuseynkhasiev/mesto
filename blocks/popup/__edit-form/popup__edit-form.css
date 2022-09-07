@@ -6,6 +6,5 @@
 @media screen and (max-width: 1023px) {
     .popup__edit-form{
         max-width: 238px;
-        width: 100%;
     }
 }

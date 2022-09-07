@@ -1,9 +1,8 @@
 const popup = document.querySelector('.popup');
 const formElement = popup.querySelector('.popup__container');
-const popupClose = formElement.querySelector('.popup__close');
-const nameInput = formElement.querySelector('.popup__name-input');
-const jobInput = formElement.querySelector('.popup__job-input');
-const popupSaveButton = formElement.querySelector('.popup__save-btn');
+const popupCloseForm = formElement.querySelector('.popup__close');
+const nameInput = formElement.querySelector('.popup__name_text_update');
+const jobInput = formElement.querySelector('.popup__job_text_update');
 
 const profile = document.querySelector('.profile');
 const profileEditButton = profile.querySelector('.profile__edit-button');
@@ -21,34 +20,36 @@ function formSubmitHandler (evt) {
     // Выберите элементы, куда должны быть вставлены значения полей
     // Вставьте новые значения с помощью textContent
     // закрытие попапа после сохранения
-    popupToggle();
+    popupClose();
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', formSubmitHandler); 
 
-// функция открытия и закрытия popup
-function popupToggle() {
-   popup.classList.toggle('popup_opened');
+function popupOpen() {
+    popup.classList.add('popup_opened');
+}
+
+function popupClose() {
+    popup.classList.remove('popup_opened');
+}
+function popupUpdateOpen() {
+    nameInput.value = profileTitle.textContent;
+    jobInput.value = profileJob.textContent;    
+    popupOpen();
 }
 
 //открытие popup редактирования с сохранением новых значений
-profileEditButton.addEventListener('click', () =>{
-    nameInput.value = profileTitle.textContent;
-    jobInput.value = profileJob.textContent;    
-    popupToggle();
-});
+profileEditButton.addEventListener('click', popupUpdateOpen);
 
 //закрытие popup
-popupClose.addEventListener('click', () =>{
-    popupToggle();
-});
+popupCloseForm.addEventListener('click', popupClose);
 
-const elLike = document.querySelectorAll('.elements__like');
-// реализация лайка для фотографий
+/* const elLike = document.querySelectorAll('.elements__like');
+ реализация лайка для фотографий
 for (let i = 0; i < elLike.length; i++) {
     elLike[i].addEventListener('click', () => {
         elLike[i].classList.toggle('elements__like_active');
     });
-}
+} */

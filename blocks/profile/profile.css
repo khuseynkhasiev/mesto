@@ -4,13 +4,13 @@
     grid-row-gap: 16px;
     grid-column-gap: 30px;
     align-items: center;
-    padding: calc(36.25px / 2) 0 calc(47.25px / 2);
+    padding: 40px 0 calc(47.25px / 2);
 }
 @media screen and (max-width: 1023px) {
     .profile{
         justify-items: center;
         grid-template-columns: minmax(282px, auto);
-        padding: calc(38.25px / 2) 0 calc(36px / 2);
+        padding: 42px 0 calc(36px / 2);
         grid-row-gap: 0;
     }
 }
