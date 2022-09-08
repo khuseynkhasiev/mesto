@@ -9,13 +9,6 @@
     align-items: center;
     background: none;
 }
-@media screen and (max-width: 1023px) {
-    .profile__add-button{
-        width: 282px;
-        grid-area: 4 / 1 / 4 / 1;
-        margin-top: 36px;
-    }
-}
 .profile__add-button:hover{
     opacity: 0.6;
     cursor: pointer;
@@ -26,4 +19,17 @@
     width: 22px;
     height: 22px;
     background-size: contain;
+}
+@media screen and (max-width: 1023px) {
+    .profile__add-button{
+        width: 282px;
+        grid-area: 4 / 1 / 4 / 1;
+        margin-top: 34px;
+    }
+    .profile__add-button::before{
+        content: '';
+        background-image: url(../../../images/add-button.svg);
+        width: 16px;
+        height: 16px;
+    }
 }
