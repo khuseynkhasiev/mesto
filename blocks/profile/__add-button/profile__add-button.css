@@ -28,7 +28,6 @@
     }
     .profile__add-button::before{
         content: '';
-        background-image: url(../../../images/add-button.svg);
         width: 16px;
         height: 16px;
     }
