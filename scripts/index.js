@@ -44,6 +44,65 @@ profileEditButton.addEventListener('click', () => {
 //закрытие popup
 popupCloseForm.addEventListener('click', popupClose);
 
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+  const cardsTemplate = document.querySelector('.cards-template').content;
+  const elementsContainer = document.querySelector('.elements__container');
+  
+//создание карточки
+function startCards (initialCards) {
+  const card = cardsTemplate.querySelector('.elements__el').cloneNode(true);
+
+  const elementImage = card.querySelector('.elements__img');
+  elementImage.alt = initialCards.name;
+  elementImage.src = initialCards.link;
+
+  const elementTitle = card.querySelector('.elements__title');
+  elementTitle.textContent = initialCards.name;
+
+  return card;
+}
+
+//создание карточки по элементам массива
+const renderCard = (initialCards) => {
+  initialCards.forEach((item) => {
+    elementsContainer.appendChild(startCards(item))
+  })
+}
+renderCard(initialCards);
+
+
+
+
+
+
+
 /* const elLike = document.querySelectorAll('.elements__like');
  реализация лайка для фотографий
 for (let i = 0; i < elLike.length; i++) {
