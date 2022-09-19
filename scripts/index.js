@@ -27,7 +27,37 @@ const profileEditButton = profile.querySelector('.profile__edit-button');
 const profileAddButton = profile.querySelector('.profile__add-button');
 
 
-function formSubmitHandler (evt) {
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ];
+
+  const cardsTemplate = document.querySelector('.cards-template').content;
+  const elementsContainer = document.querySelector('.elements__container');
+  
+  function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
                                                 // О том, как это делать, расскажем позже.
@@ -77,36 +107,6 @@ popupAddClose.addEventListener('click', function() {
   popupClose(popupAdd);
 });
 
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
-  const cardsTemplate = document.querySelector('.cards-template').content;
-  const elementsContainer = document.querySelector('.elements__container');
-  
 //создание карточки
 function startCards (initialCards) {
   const card = cardsTemplate.querySelector('.elements__el').cloneNode(true);
@@ -117,7 +117,6 @@ function startCards (initialCards) {
 
   const elementTitle = card.querySelector('.elements__title');
   elementTitle.textContent = initialCards.name;
-
   return card;
 }
 
@@ -138,7 +137,7 @@ const renderCardPrepend = (array) => {
 renderCard(initialCards);
 
 // добавление данных от пользователя для добавления карточки
-function formSubmitAdd (evt) {
+function addSubmitForm(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
   const item = {};
@@ -148,18 +147,19 @@ function formSubmitAdd (evt) {
   renderCardPrepend(arrayItem);
   popupClose(popupAdd);
 }
-formAdd.addEventListener('submit', formSubmitAdd); 
+formAdd.addEventListener('submit', addSubmitForm); 
 
 const imageLike = document.querySelectorAll('.elements__like');
 // реализация лайка для фотографий (через foEach)
-/* imageLike.forEach((image) => {
+imageLike.forEach((image) => {
   image.addEventListener('click', () => {
     image.classList.toggle('elements__like_active');
   })
-}); */
+});
 // реализация лайка для фотографий (через цикл for)
-for (let i = 0; i < imageLike.length; i++) {
+/* for (let i = 0; i < imageLike.length; i++) {
   imageLike[i].addEventListener('click', () => {
     imageLike[i].classList.toggle('elements__like_active');
     });
 }
+ */
