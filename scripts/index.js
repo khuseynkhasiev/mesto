@@ -117,6 +117,8 @@ function startCards (initialCards) {
 
   const elementTitle = card.querySelector('.elements__title');
   elementTitle.textContent = initialCards.name;
+
+  setListenerForCard(card);
   return card;
 }
 
@@ -149,17 +151,23 @@ function addSubmitForm(evt) {
 }
 formAdd.addEventListener('submit', addSubmitForm); 
 
-const imageLike = document.querySelectorAll('.elements__like');
-// реализация лайка для фотографий (через foEach)
-imageLike.forEach((image) => {
-  image.addEventListener('click', () => {
-    image.classList.toggle('elements__like_active');
-  })
-});
-// реализация лайка для фотографий (через цикл for)
-/* for (let i = 0; i < imageLike.length; i++) {
-  imageLike[i].addEventListener('click', () => {
-    imageLike[i].classList.toggle('elements__like_active');
-    });
+// слушатель для card
+function setListenerForCard(card) {
+  const cardLike = card.querySelector('.elements__like');
+  cardLike.addEventListener('click', likeCard);
+
+  const cardDelete = card.querySelector('.elements__trash');
+  cardDelete.addEventListener('click', deleteCard);
 }
- */
+
+// возвращает лайк
+function likeCard(event) {
+  const elementLike = event.target.closest('.elements__like');
+  elementLike.classList.toggle('elements__like_active');
+}
+
+// возвращаяет удаление
+function deleteCard(event) {
+  const cardTrash = event.target.closest('.elements__el');
+  cardTrash.remove();
+} 
