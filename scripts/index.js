@@ -2,10 +2,16 @@
 const popup = document.querySelector('.popup');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
+const popupImage = document.querySelector('.popup_type_image');
 
 // popups close 
 const popupEditClose = popupEdit.querySelector('.popup__close');
 const popupAddClose = popupAdd.querySelector('.popup__close');
+const popupImageClose = popupImage.querySelector('.popup__close');
+
+// popupImage
+const popupImageInfo = popupImage.querySelector('.popup__image');
+const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption');
 
 // formEdit
 const formEdit = popupEdit.querySelector('.popup__container');
@@ -22,10 +28,13 @@ const imageLink = formAdd.querySelector('.popup__input_type_job');
 const profile = document.querySelector('.profile');
 const profileTitle = profile.querySelector('.profile__title');
 const profileJob = profile.querySelector('.profile__job');
+
 //popups open button
 const profileEditButton = profile.querySelector('.profile__edit-button');
 const profileAddButton = profile.querySelector('.profile__add-button');
 
+const cardsTemplate = document.querySelector('.cards-template').content;
+const elementsContainer = document.querySelector('.elements__container');
 
 const initialCards = [
     {
@@ -54,8 +63,6 @@ const initialCards = [
     }
   ];
 
-  const cardsTemplate = document.querySelector('.cards-template').content;
-  const elementsContainer = document.querySelector('.elements__container');
   
   function formSubmitHandler (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -82,14 +89,14 @@ const popupClose = function (popup) {
   popup.classList.remove('popup_opened');
 }
 
-// слушатель на клик, открытие попапа редактирования с сохр новых значений
+// слушатель на клик открытие попапа редактирования с сохр новых значений
 profileEditButton.addEventListener('click', () => {
     nameInput.value = profileTitle.textContent;
     jobInput.value = profileJob.textContent;
     popupOpen(popupEdit);
 });
 
-// слушатель на клик, открытие попапа добавления места
+// слушатель на клик открытие попапа добавления места
 profileAddButton.addEventListener('click', () => {
   //сбросить инпуты
   placeName.value = 'Название';
@@ -97,12 +104,17 @@ profileAddButton.addEventListener('click', () => {
   popupOpen(popupAdd);
 })
 
-//слушатель на клик, закрытие попапа редактирования
+// слушатель на клик закрытия попапа изображения
+popupImageClose.addEventListener('click', () => {
+  popupClose(popupImage);
+})
+
+//слушатель на клик закрытие попапа редактирования
 popupEditClose.addEventListener('click', function() {
   popupClose(popupEdit);
 });
 
-//слушатель на клик, закрытие попапа добавления
+//слушатель на клик закрытие попапа добавления
 popupAddClose.addEventListener('click', function() {
   popupClose(popupAdd);
 });
@@ -153,11 +165,17 @@ formAdd.addEventListener('submit', addSubmitForm);
 
 // слушатель для card
 function setListenerForCard(card) {
+  //для лайка
   const cardLike = card.querySelector('.elements__like');
   cardLike.addEventListener('click', likeCard);
 
+  //для удаления
   const cardDelete = card.querySelector('.elements__trash');
   cardDelete.addEventListener('click', deleteCard);
+
+  //для зума изображения ВОПРОСЫ!!!!!
+  const cardImage = card.querySelector('.elements__img');
+  cardImage.addEventListener('click', openedCardImage); 
 }
 
 // возвращает лайк
@@ -171,3 +189,20 @@ function deleteCard(event) {
   const cardTrash = event.target.closest('.elements__el');
   cardTrash.remove();
 } 
+
+// возвращяет увеличенное изображение с подписью ВОПРОСЫ!!!!!!
+function openedCardImage(event) { 
+
+  const popupContainer = event.target.closest('.elements__el');
+  const elementImage = popupContainer.querySelector('.element__img');
+  const elementTitle = popupContainer.querySelector('.elements__title');
+
+  popupImageInfo.src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
+  popupImageInfo.alt = 'имя изображения';
+
+  popupFigcaptionImage.textContent = 'подпись';
+
+  popupImage.classList.add('popup_opened');
+}
+
+
