@@ -187,15 +187,13 @@ function deleteCard(event) {
   cardTrash.remove();
 } 
 
-// возвращяет увеличенное изображение с подписью ВОПРОСЫ!!!!!!
+// возвращяет увеличенное изображение с подписью
 function openedCardImage(card) { 
-
   const elementImage = card.querySelector('.elements__img');
   const elementTitle = card.querySelector('.elements__title');
 
   popupImageInfo.src = elementImage.src;
   popupImageInfo.alt = elementImage.alt;
-
   popupFigcaptionImage.textContent = elementTitle.textContent;
 
   popupImage.classList.add('popup_opened');
