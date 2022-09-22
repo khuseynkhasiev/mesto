@@ -120,31 +120,32 @@ popupAddClose.addEventListener('click', function() {
 });
 
 //создание карточки
-function startCards (initialCards) {
+function createCard(initialCard) {
   const card = cardsTemplate.querySelector('.elements__el').cloneNode(true);
 
-  const elementImage = card.querySelector('.elements__img');
-  elementImage.alt = initialCards.name;
-  elementImage.src = initialCards.link;
+  const cardImage = card.querySelector('.elements__img');
+  cardImage.alt = initialCard.name;
+  cardImage.src = initialCard.link;
+  cardImage.addEventListener('click', () => openedCardImage(card));
 
-  const elementTitle = card.querySelector('.elements__title');
-  elementTitle.textContent = initialCards.name;
+  const cardTitle = card.querySelector('.elements__title');
+  cardTitle.textContent = initialCard.name;
 
   setListenerForCard(card);
   return card;
 }
 
 //создание карточки по элементам массива из шаблона
-const renderCard = (initialCards) => {
-  initialCards.forEach((item) => {
-    elementsContainer.appendChild(startCards(item))
+const renderCard = (initialCard) => {
+  initialCard.forEach((item) => {
+    elementsContainer.appendChild(createCard(item))
   })
 }
 
 //создание карточки от пользователя в начало
 const renderCardPrepend = (array) => {
   array.forEach((item) => {
-    elementsContainer.prepend(startCards(item))
+    elementsContainer.prepend(createCard(item))
   })
 }
 
@@ -172,10 +173,6 @@ function setListenerForCard(card) {
   //для удаления
   const cardDelete = card.querySelector('.elements__trash');
   cardDelete.addEventListener('click', deleteCard);
-
-  //для зума изображения ВОПРОСЫ!!!!!
-  const cardImage = card.querySelector('.elements__img');
-  cardImage.addEventListener('click', openedCardImage); 
 }
 
 // возвращает лайк
@@ -191,18 +188,15 @@ function deleteCard(event) {
 } 
 
 // возвращяет увеличенное изображение с подписью ВОПРОСЫ!!!!!!
-function openedCardImage(event) { 
+function openedCardImage(card) { 
 
-  const popupContainer = event.target.closest('.elements__el');
-  const elementImage = popupContainer.querySelector('.element__img');
-  const elementTitle = popupContainer.querySelector('.elements__title');
+  const elementImage = card.querySelector('.elements__img');
+  const elementTitle = card.querySelector('.elements__title');
 
-  popupImageInfo.src = 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg';
-  popupImageInfo.alt = 'имя изображения';
+  popupImageInfo.src = elementImage.src;
+  popupImageInfo.alt = elementImage.alt;
 
-  popupFigcaptionImage.textContent = 'подпись';
+  popupFigcaptionImage.textContent = elementTitle.textContent;
 
   popupImage.classList.add('popup_opened');
 }
-
-
