@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
+    <script defer src="scripts/index.js"></script>
     <title>Место</title>
 </head>
 <body class="body">
@@ -33,11 +34,11 @@
     </div>
     <div class="popup popup_type_edit">
         <div class="popup__container">
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close" type="button" aria-label="кнопка закрытия"></button>
             <form class="popup__edit-form" name="popupEditForm">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popupName" value="Жак-Ив Кусто">
-                <input type="text" class="popup__input popup__input_type_job" name="popupJob" value="Исследователь океана">
+                <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Жак-Ив Кусто" required>
+                <input type="text" class="popup__input popup__input_type_job" name="popupJob" placeholder="Исследователь океана" required>
                 <button class="popup__save-btn" type="submit">Сохранить</button>
             </form>
         </div>
@@ -47,8 +48,8 @@
             <button class="popup__close" type="button"></button>
             <form class="popup__edit-form" name="popupEditForm">
                 <h3 class="popup__title">Новое место</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popupName" value="Название">
-                <input type="text" class="popup__input popup__input_type_job" name="popupJob" value="Ссылка на картинку">
+                <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Название" required>
+                <input type="url" class="popup__input popup__input_type_job" name="popupJob" placeholder="Ссылка на картинку" required>
                 <button class="popup__save-btn" type="submit">Создать</button>
             </form>
         </div>
@@ -64,14 +65,13 @@
     </div>
     <template class="cards-template">
         <li class="elements__el">
-            <button class="elements__trash" type="button" aria-label="кнопка удаления изображения"></button>
+            <button class="elements__trash" type="button" aria-label="кнопка удаления карточки"></button>
             <img class="elements__img">
             <div class="elements__info">
                 <h2 class="elements__title"></h2>
-                <button class="elements__like" type="button" aria-label="кнопка выставления и отмены лайка"></button>
+                <button class="elements__like" type="button" aria-label="кнопка выставления лайка или отмены лайка"></button>
             </div>
         </li>
     </template>
-    <script src="scripts/index.js"></script>
 </body>
 </html>

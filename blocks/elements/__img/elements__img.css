@@ -6,4 +6,6 @@
     object-fit: cover;
     display: block;
     cursor: pointer;
+    background: black;
+    color: white;
 }
