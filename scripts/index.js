@@ -137,22 +137,15 @@ function createObjectCard(initialCard) {
   return card;
 }
 
-//создание карточки по элементам массива из шаблона
-const renderCard = (initialCard) => {
-  initialCard.forEach((item) => {
-    elementsContainer.appendChild(createObjectCard(item))
-  })
-}
-
 //создание карточки от пользователя в начало
-const renderCardPrepend = (array) => {
-  array.forEach((item) => {
-    elementsContainer.prepend(createObjectCard(item))
-  })
+const renderCard = (card) => {
+    elementsContainer.prepend(createObjectCard(card))
 }
 
-
-renderCard(initialCards);
+//создание карточки из массива объектов
+initialCards.forEach((card) => {
+  renderCard(card);
+})
 
 // добавление данных от пользователя для добавления карточки
 function submitAddForm(evt) {
@@ -162,8 +155,7 @@ function submitAddForm(evt) {
     name: placeName.value,
     link: imageLink.value
   }
-  const arrayItem = [item];
-  renderCardPrepend(arrayItem);
+  renderCard(item);
   closePopup(popupAdd);
 }
 formAdd.addEventListener('submit', submitAddForm); 
