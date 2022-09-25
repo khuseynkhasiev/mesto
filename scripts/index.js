@@ -143,7 +143,7 @@ const renderCard = (card) => {
 }
 
 //создание карточки из массива объектов
-initialCards.forEach((card) => {
+initialCards.reverse().forEach((card) => {
   renderCard(card);
 })
 
