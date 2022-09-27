@@ -91,8 +91,6 @@ const closePopup = function(popup) {
 profileEditButton.addEventListener('click', () => {
     nameInput.value = '';
     jobInput.value = '';
-    nameInput.placeholder = profileTitle.textContent;
-    jobInput.placeholder = profileJob.textContent;
     openPopup(popupEdit);
 });
 
@@ -101,8 +99,6 @@ profileAddButton.addEventListener('click', () => {
   //сбросить инпуты
   placeName.value = '';
   imageLink.value = '';
-  placeName.placeholder = 'Название';
-  imageLink.placeholder = 'Ссылка на картинку';
   openPopup(popupAdd);
 })
 
@@ -122,16 +118,16 @@ popupAddCloseButton.addEventListener('click', function() {
 });
 
 //создание карточки
-function createObjectCard(initialCard) {
+function createCard(cardObject) {
   const card = cardTemplate.querySelector('.elements__el').cloneNode(true);
 
   const cardImage = card.querySelector('.elements__img');
-  cardImage.alt = initialCard.name;
-  cardImage.src = initialCard.link;
+  cardImage.alt = cardObject.name;
+  cardImage.src = cardObject.link;
   cardImage.addEventListener('click', () => openedCardImage(card));
 
   const cardTitle = card.querySelector('.elements__title');
-  cardTitle.textContent = initialCard.name;
+  cardTitle.textContent = cardObject.name;
 
   setCardListeners(card);
   return card;
@@ -139,7 +135,7 @@ function createObjectCard(initialCard) {
 
 //создание карточки от пользователя в начало
 const renderCard = (card) => {
-    elementsContainer.prepend(createObjectCard(card))
+    elementsContainer.prepend(createCard(card))
 }
 
 //создание карточки из массива объектов
