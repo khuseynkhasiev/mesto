@@ -35,22 +35,26 @@
     <div class="popup popup_type_edit">
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="кнопка закрытия"></button>
-            <form class="popup__edit-form" name="popupEditForm">
+            <form class="popup__form" name="popup-form" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Имя" required>
-                <input type="text" class="popup__input popup__input_type_job" name="popupJob" placeholder="О себе" required>
-                <button class="popup__save-btn" type="submit">Сохранить</button>
+                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-name" placeholder="Имя" minlength="2" maxlength="40" required>
+                    <span class="popup__error" id="popup-name-error"></span>
+                <input type="text" class="popup__input popup__input_type_job" name="popup-job" id="popup-job" placeholder="О себе"  minlength="2" maxlength="200" required>
+                    <span class="popup__error" id="popup-job-error"></span>
+                <button class="popup__save-btn popup__save-btn_inactive" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
     <div class="popup popup_type_add">
         <div class="popup__container">
             <button class="popup__close" type="button"></button>
-            <form class="popup__edit-form" name="popupEditForm">
+            <form class="popup__form" name="popup-form">
                 <h3 class="popup__title">Новое место</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popupName" placeholder="Название" required>
-                <input type="url" class="popup__input popup__input_type_job" name="popupJob" placeholder="Ссылка на картинку" required>
-                <button class="popup__save-btn" type="submit">Создать</button>
+                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-place" placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="popup__error" id="popup-place-error"></span>
+                <input type="url" class="popup__input popup__input_type_job" name="popup-job" id="popup-link" placeholder="Ссылка на картинку" required>
+                    <span class="popup__error" id="popup-link-error"></span>
+                <button class="popup__save-btn popup__save-btn_inactive" type="submit">Создать</button>
             </form>
         </div>
     </div>

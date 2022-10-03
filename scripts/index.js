@@ -190,3 +190,54 @@ function openedCardImage(card) {
 
   openPopup(popupImage);
 }
+
+// валидация
+const formElement = document.querySelector('.popup__form');
+const inputElement = formElement.querySelector('.popup__input');
+
+
+// отображение ошибки
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorSpan = formElement.querySelector(`#${inputElement.id}-error`);
+
+  inputElement.classList.add('popup__input_error');
+  errorSpan.textContent = errorMessage;
+}
+//скрытие ошибки
+const hideInputError = (formElement, inputElement) => {
+  const errorSpan = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_error');
+  errorSpan.textContent = '';
+}
+
+// проверка на валидацию поля инпута
+const isValid = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+}
+
+// находим все инпуты массива
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      isValid(formElement, inputElement);
+    })
+  })
+}
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+
+  formList.forEach((formElement) => {
+    setEventListeners(formElement);
+  });
+};
+
+const hasInvalidInput = 
+
+// Вызовем функцию
+enableValidation();
