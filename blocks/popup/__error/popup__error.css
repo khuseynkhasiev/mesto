@@ -5,4 +5,11 @@
     font-size: 12px;
     line-height: 15px;
     color: #FF0000;
+
+    min-height: 30px;
+    margin: 5px 0 10px;
+    display: block;
+}
+.popup__error:last-of-type{
+    margin: 5px 0 0;
 }

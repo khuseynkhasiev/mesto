@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
     <script defer src="scripts/index.js"></script>
+    <script defer src="scripts/validate.js"></script>
     <title>Место</title>
 </head>
 <body class="body">
@@ -38,9 +39,9 @@
             <form class="popup__form" name="popup-form" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-name" placeholder="Имя" minlength="2" maxlength="40" required>
-                    <span class="popup__error" id="popup-name-error"></span>
+                <span class="popup__error" id="popup-name-error"></span>
                 <input type="text" class="popup__input popup__input_type_job" name="popup-job" id="popup-job" placeholder="О себе"  minlength="2" maxlength="200" required>
-                    <span class="popup__error" id="popup-job-error"></span>
+                <span class="popup__error" id="popup-job-error"></span>
                 <button class="popup__save-btn popup__save-btn_inactive" type="submit">Сохранить</button>
             </form>
         </div>

@@ -3,7 +3,7 @@
     background: #000000;
     border-radius: 2px;
     padding: 14px 124px 13px 125px;
-    margin-top: 49px;
+    margin-top: 31px;
     border-width: 0;
     font-family: 'Inter', 'Arial', 'sans-serif';
     font-style: normal;
@@ -19,7 +19,6 @@
 }
 @media screen and (max-width: 1023px) {
     .popup__save-btn{
-        margin-top: 45px;
         padding: 14px 82px 14px;
         font-size: 14px;
         line-height: 17px;
