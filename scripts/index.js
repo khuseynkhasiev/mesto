@@ -80,25 +80,57 @@ formEdit.addEventListener('submit', submitHandlerFormEdit);
 // открытие попапа
 const openPopup = function(popup) {
   popup.classList.add('popup_opened');
+
+  // слушатель для закрытия попапа через кнопку Escape
+  document.addEventListener('keydown', closeModalWindow);
+
+  // слушатель для закрытия попапа кликом на оверлей
+  document.addEventListener('click', closeModalWindowClick);
+}
+
+
+// закрытие попапа кликом на оверлей
+function closeModalWindowClick (evt) {
+  if(evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
+    closePopup(evt.target);
+  }
+}
+
+
+// закрытие попапа с через кнопку Escape
+function closeModalWindow (evt) {
+    if (evt.key === "Escape") {
+      const activePopup = document.querySelector('.popup_opened');
+      closePopup(activePopup);
+  }
 }
 
 // закрытие попапа
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
+
+  // сброс инпутов после закрытия формы
+  popup.querySelector('.popup__form').reset();
+  
+  // удаление слушателя для закрытия через кнопку Escape
+  document.removeEventListener('keydown', closeModalWindow);
+
+  // удаление слушателя для закрытия попапа кликом на оверлей
+  document.addEventListener('click', closeModalWindowClick);
 }
 
-// слушатель на клик открытие попапа редактирования с сохр новых значений
+// слушатель на клик открытие попапа редактирования
 profileEditButton.addEventListener('click', () => {
-    nameInput.value = '';
-    jobInput.value = '';
+/*     nameInput.value = '';
+    jobInput.value = ''; */
     openPopup(popupEdit);
 });
 
 // слушатель на клик открытие попапа добавления места
 profileAddButton.addEventListener('click', () => {
   //сбросить инпуты
-  placeName.value = '';
-  imageLink.value = '';
+/*   placeName.value = '';
+  imageLink.value = ''; */
   openPopup(popupAdd);
 })
 

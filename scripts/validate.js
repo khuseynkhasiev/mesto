@@ -84,6 +84,7 @@ const hasInvalidInput = (inputList => {
 // Функция принимает массив полей ввода
 // и элемент кнопки, состояние которой нужно менять
 const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
+//  disibleButtonElement(buttonElement);
   // Если есть хотя бы один невалидный инпут
   if (hasInvalidInput(inputList)) {
     // сделай кнопку неактивной
@@ -93,6 +94,12 @@ const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
     buttonElement.classList.remove(inactiveButtonClass);
   }
 }; 
+
+/* const disibleButtonElement = (buttonElement) => {
+  buttonElement.addEventListener('click', () => {
+    buttonElement.classList.add('popup__save-btn_inactive');
+  })
+} */
 
   // Вызовем функцию
 enableValidation(validationObj);
