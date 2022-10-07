@@ -62,6 +62,7 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 const cardTemplate = document.querySelector('.cards-template').content;
 const elementsContainer = document.querySelector('.elements__container');
 
+
   function submitHandlerFormEdit(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
@@ -87,7 +88,6 @@ const openPopup = function(popup) {
   // слушатель для закрытия попапа кликом на оверлей
   document.addEventListener('click', closeModalWindowClick);
 }
-
 
 // закрытие попапа кликом на оверлей
 function closeModalWindowClick (evt) {
