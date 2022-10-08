@@ -1,11 +1,21 @@
 // создаем объект для валидации
-const validationObj = {
+const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save-btn',
   inactiveButtonClass: 'popup__save-btn_inactive',
   inputErrorClass: 'popup__input_type_error'
 }; 
+
+/* function resetError(formElement, {settings}) {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+
+    toggleButtonState(inputList, settings)
+  });
+} */
+
 
 // отображение ошибки
 const showInputError = (formElement, inputElement, errorMessage, {inputErrorClass}) => {
@@ -22,6 +32,22 @@ const hideInputError = (formElement, inputElement, {inputErrorClass}) => {
   inputElement.classList.remove(inputErrorClass);
   errorSpan.textContent = '';
 }
+
+// Функция принимает массив полей ввода
+// и элемент кнопки, состояние которой нужно менять
+const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
+  
+  // Если есть хотя бы один невалидный инпут
+  if (hasInvalidInput(inputList)) {
+    // сделай кнопку неактивной
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    // иначе сделай кнопку активной
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
+}; 
 
 // проверка на валидацию поля инпута
 const isValid = (formElement, inputElement, {...settings}) => {
@@ -55,8 +81,8 @@ const setEventListeners = (formElement, {inputSelector, submitButtonSelector, ..
     });
   });
 };
-const enableValidation = ({formSelector, ...settings}) => {
 
+const enableValidation = ({formSelector, ...settings}) => {
   // Найдём все формы с указанным классом в DOM,
   // сделаем из них массив методом Array.from
   const formList = Array.from(document.querySelectorAll(formSelector));
@@ -80,21 +106,5 @@ const hasInvalidInput = (inputList => {
   });
 });
 
-
-// Функция принимает массив полей ввода
-// и элемент кнопки, состояние которой нужно менять
-const toggleButtonState = (inputList, buttonElement, {inactiveButtonClass}) => {
-  
-  // Если есть хотя бы один невалидный инпут
-  if (hasInvalidInput(inputList)) {
-    // сделай кнопку неактивной
-    buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.setAttribute('disabled', '');
-  } else {
-    // иначе сделай кнопку активной
-    buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
-  }
-}; 
   // Вызовем функцию
-enableValidation(validationObj);
+enableValidation(validationConfig);
