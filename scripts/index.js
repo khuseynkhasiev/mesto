@@ -33,7 +33,6 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 
 const cardTemplate = document.querySelector('.cards-template').content;
 const cardsContainer = document.querySelector('.elements__container');
-const cardElement = cardTemplate.querySelector('.elements__el');
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -48,6 +47,7 @@ function handleProfileFormSubmit(evt) {
   * закрытие попапа после сохранения */ 
   closePopup(popupEdit);
 }
+
 formEdit.addEventListener('submit', handleProfileFormSubmit); 
 
 // открытие попапа
@@ -59,9 +59,6 @@ const openPopup = function(popup) {
 
   // слушатель для закрытия попапа кликом на оверлей
   popup.addEventListener('click', handleClosePopupByClick);
-
-  // сброс значений формы
-  resetForm(popup, validationConfig);
 }
 
 // закрытие попапа кликом на оверлей
@@ -90,37 +87,29 @@ const closePopup = function(popup) {
   popup.removeEventListener('click', handleClosePopupByClick);
 }
 
-// сброс значений формы
-function resetForm(popup, validationConfig) {
-  const popupForm = popup.querySelector('.popup__form');
-  if (popup.contains(popupForm)) {
-
-    // сбрасываем форму
-    popupForm.reset();
-
-    // очищаем/скрываем ошибки инпутов
-    const inputList = Array.from(popup.querySelectorAll(validationConfig.inputSelector));
-    inputList.forEach((inputElement) => {
-      hideInputError(popup, inputElement, validationConfig);
-    });
-
-  // Найдём в текущей форме кнопку отправки и деактивируем ее
-  const buttonElement = popup.querySelector(validationConfig.submitButtonSelector);
-  toggleButtonState(inputList, buttonElement, validationConfig);
-  }
-}
-
 // слушатель на клик открытие попапа редактирования
 profileEditButton.addEventListener('click', () => {
-  openPopup(popupEdit);
+  openProfilePopup(popupEdit, validationConfig);
+})
+
+// функция открытия попапа редактирования
+function openProfilePopup(popupEdit, validationConfig) {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
-});
+  resetForm(popupEdit, validationConfig);
+}
 
 // слушатель на клик открытие попапа добавления места
 profileAddButton.addEventListener('click', () => {
-  openPopup(popupAdd);
+  openPlacePopup(popupAdd, validationConfig);
 })
+
+// функция открытия попапа добавления места
+function openPlacePopup(popupAdd, validationConfig) {
+  const formAdd = popupAdd.querySelector('.popup__form');
+  formAdd.reset();
+  resetForm(popupAdd, validationConfig);
+}
 
 // слушатель на клик закрытия попапа изображения
 popupImageCloseButton.addEventListener('click', () => {
@@ -130,17 +119,16 @@ popupImageCloseButton.addEventListener('click', () => {
 //слушатель на клик закрытие попапа редактирования
 popupEditCloseButton.addEventListener('click', function() {
   closePopup(popupEdit);
-});
+})
 
 //слушатель на клик закрытие попапа добавления
 popupAddCloseButton.addEventListener('click', function() {
   closePopup(popupAdd);
-
-});
+})
 
 //создание карточки
 function createCard(cardObject) {
-  const card = cardElement.cloneNode(true);
+  const card = cardTemplate.querySelector('.elements__el').cloneNode(true);
   const cardImage = card.querySelector('.elements__img');
   cardImage.alt = cardObject.name;
   cardImage.src = cardObject.link;
@@ -166,7 +154,6 @@ initialCards.reverse().forEach((card) => {
 // добавление данных от пользователя для добавления карточки
 function handleCardFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
   const item = {
     name: placeName.value,
     link: imageLink.value
@@ -174,6 +161,7 @@ function handleCardFormSubmit(evt) {
   renderCard(item);
   closePopup(popupAdd);
 }
+
 formAdd.addEventListener('submit', handleCardFormSubmit); 
 
 // слушатель для card
