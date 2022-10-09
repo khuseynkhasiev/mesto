@@ -59,6 +59,9 @@ const openPopup = function(popup) {
 
   // слушатель для закрытия попапа кликом на оверлей
   popup.addEventListener('click', handleClosePopupByClick);
+
+  // сброс значений формы
+  resetForm(popup, validationConfig);
 }
 
 // закрытие попапа кликом на оверлей
@@ -80,9 +83,6 @@ function handleClosePopupByEsc (evt) {
 const closePopup = function(popup) {
   popup.classList.remove('popup_opened');
 
-  // сброс значение инпута формы
-  resetInputForm(popup);
-
   // удаление слушателя для закрытия через кнопку Escape
   document.removeEventListener('keydown', handleClosePopupByEsc);
 
@@ -90,11 +90,23 @@ const closePopup = function(popup) {
   popup.removeEventListener('click', handleClosePopupByClick);
 }
 
-// сброс значение инпута формы
-function resetInputForm(popup) {
+// сброс значений формы
+function resetForm(popup, validationConfig) {
   const popupForm = popup.querySelector('.popup__form');
   if (popup.contains(popupForm)) {
+
+    // сбрасываем форму
     popupForm.reset();
+
+    // очищаем/скрываем ошибки инпутов
+    const inputList = Array.from(popup.querySelectorAll(validationConfig.inputSelector));
+    inputList.forEach((inputElement) => {
+      hideInputError(popup, inputElement, validationConfig);
+    });
+
+  // Найдём в текущей форме кнопку отправки и деактивируем ее
+  const buttonElement = popup.querySelector(validationConfig.submitButtonSelector);
+  toggleButtonState(inputList, buttonElement, validationConfig);
   }
 }
 

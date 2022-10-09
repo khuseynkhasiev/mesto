@@ -7,16 +7,6 @@ const validationConfig = {
   inputErrorClass: 'popup__input_type_error'
 }; 
 
-/* function resetError(formElement, {settings}) {
-  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
-  inputList.forEach((inputElement) => {
-    hideInputError(formElement, inputElement, settings);
-
-    toggleButtonState(inputList, settings)
-  });
-} */
-
-
 // отображение ошибки
 const showInputError = (formElement, inputElement, errorMessage, {inputErrorClass}) => {
   // Находим элемент ошибки внутри самой функции
