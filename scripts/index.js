@@ -113,4 +113,4 @@ function handleCardFormSubmit(evt) {
 }
 
 formAdd.addEventListener('submit', handleCardFormSubmit); 
-// рефакторинг карточек конец ----------------
+// рефакторинг карточек конец ---------------
