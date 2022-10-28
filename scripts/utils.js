@@ -1,16 +1,16 @@
 // popups 
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');
-const popupImage = document.querySelector('.popup_type_image');
+const popupImage = document.querySelector('.popup_type_image'); //+card
 
 // popups close button
 const popupEditCloseButton = popupEdit.querySelector('.popup__close');
 const popupAddCloseButton = popupAdd.querySelector('.popup__close');
-const popupImageCloseButton = popupImage.querySelector('.popup__close');
+const popupImageCloseButton = popupImage.querySelector('.popup__close'); 
 
 // popupImage
-const popupImageInfo = popupImage.querySelector('.popup__image');
-const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption');
+const popupImageInfo = popupImage.querySelector('.popup__image'); //+card
+const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption'); //+card
 
 // formEdit
 const formEdit = popupEdit.querySelector('.popup__container');
@@ -33,3 +33,5 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 
 const cardTemplate = document.querySelector('.cards-template').content; 
 const cardsContainer = document.querySelector('.elements__container');
+
+export {popupImage, popupImageInfo, popupFigcaptionImage};

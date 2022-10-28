@@ -1,3 +1,4 @@
+import {popupImage, popupImageInfo, popupFigcaptionImage} from './utils.js';
 const initialCards = [
     {
       name: 'Архыз',

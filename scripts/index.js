@@ -107,7 +107,8 @@ function handleCardFormSubmit(evt) {
     name: placeName.value,
     link: imageLink.value
   }
-  renderCard(item);
+  const cardItem = new Card(item, cardTemplate)
+  renderCard(cardItem);
   closePopup(popupAdd);
 }
 
