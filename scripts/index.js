@@ -53,26 +53,26 @@ const closePopup = function(popup) {
 
 // слушатель на клик открытие попапа редактирования
 profileEditButton.addEventListener('click', () => {
-  openProfilePopup(popupEdit, validationConfig);
+  openProfilePopup();
 })
 
 // функция открытия попапа редактирования
-function openProfilePopup(popupEdit, validationConfig) {
+function openProfilePopup() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
-  resetForm(popupEdit, validationConfig);
+  validationProfilePopup.enableValidation();
 }
 
 // слушатель на клик открытие попапа добавления места
 profileAddButton.addEventListener('click', () => {
-  openPlacePopup(popupAdd, validationConfig);
+  openPlacePopup();
 })
 
 // функция открытия попапа добавления места
-function openPlacePopup(popupAdd, validationConfig) {
+function openPlacePopup() {
   const formAdd = popupAdd.querySelector('.popup__form');
   formAdd.reset();
-  resetForm(popupAdd, validationConfig);
+  validationPlacePopup.enableValidation();
 }
 
 // слушатель на клик закрытия попапа изображения
@@ -90,7 +90,6 @@ popupAddCloseButton.addEventListener('click', function() {
   closePopup(popupAdd);
 })
 
-// рефакторинг карточек начало ---------------
 //создание карточки в начало
 const renderCard = (cardItem) => {
   cardsContainer.prepend(cardItem.generateCard());
@@ -113,4 +112,3 @@ function handleCardFormSubmit(evt) {
 }
 
 formAdd.addEventListener('submit', handleCardFormSubmit); 
-// рефакторинг карточек конец ---------------
