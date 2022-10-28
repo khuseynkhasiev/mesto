@@ -1,6 +1,6 @@
 // popups 
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupAdd = document.querySelector('.popup_type_add');
+const popupEdit = document.querySelector('.popup_type_edit'); //+validate
+const popupAdd = document.querySelector('.popup_type_add'); //+validate
 const popupImage = document.querySelector('.popup_type_image'); //+card
 
 // popups close button
@@ -34,4 +34,4 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 const cardTemplate = document.querySelector('.cards-template').content; 
 const cardsContainer = document.querySelector('.elements__container');
 
-export {popupImage, popupImageInfo, popupFigcaptionImage};
+export {popupImage, popupImageInfo, popupFigcaptionImage, popupEdit, popupAdd};
