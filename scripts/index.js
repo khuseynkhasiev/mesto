@@ -1,3 +1,8 @@
+import { popupEdit, popupAdd, popupImage, popupEditCloseButton, popupAddCloseButton, popupImageCloseButton, formEdit, nameInput, jobInput, formAdd, placeName, imageLink, profileTitle, profileJob, profileEditButton, profileAddButton, cardTemplate, cardsContainer } from './variables.js';
+import { validationProfilePopup, validationPlacePopup } from './FormValidator.js';
+import Card from './Card.js';
+import { initialCards } from './cards.js';
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
                                                 // Так мы можем определить свою логику отправки.
@@ -112,4 +117,6 @@ function handleCardFormSubmit(evt) {
   closePopup(popupAdd);
 }
 
-formAdd.addEventListener('submit', handleCardFormSubmit); 
+formAdd.addEventListener('submit', handleCardFormSubmit);
+
+export {openPopup};

@@ -1,16 +1,16 @@
 // popups 
-const popupEdit = document.querySelector('.popup_type_edit'); //+validate
-const popupAdd = document.querySelector('.popup_type_add'); //+validate
-const popupImage = document.querySelector('.popup_type_image'); //+card
+const popupEdit = document.querySelector('.popup_type_edit');
+const popupAdd = document.querySelector('.popup_type_add');
+const popupImage = document.querySelector('.popup_type_image');
 
 // popups close button
 const popupEditCloseButton = popupEdit.querySelector('.popup__close');
 const popupAddCloseButton = popupAdd.querySelector('.popup__close');
-const popupImageCloseButton = popupImage.querySelector('.popup__close'); 
+const popupImageCloseButton = popupImage.querySelector('.popup__close');
 
 // popupImage
-const popupImageInfo = popupImage.querySelector('.popup__image'); //+card
-const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption'); //+card
+const popupImageInfo = popupImage.querySelector('.popup__image');
+const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption');
 
 // formEdit
 const formEdit = popupEdit.querySelector('.popup__container');
@@ -31,7 +31,7 @@ const profileJob = profile.querySelector('.profile__job');
 const profileEditButton = profile.querySelector('.profile__edit-button');
 const profileAddButton = profile.querySelector('.profile__add-button');
 
-const cardTemplate = document.querySelector('.cards-template').content; 
+const cardTemplate = document.querySelector('.cards-template').content;
 const cardsContainer = document.querySelector('.elements__container');
 
-export {popupImage, popupImageInfo, popupFigcaptionImage, popupEdit, popupAdd};
+export { popupImage, popupImageInfo, popupFigcaptionImage, popupEdit, popupAdd, popupEditCloseButton, popupAddCloseButton, popupImageCloseButton, formEdit, nameInput, jobInput, formAdd, placeName, imageLink, profileTitle, profileJob, profileEditButton, profileAddButton, cardTemplate, cardsContainer };
