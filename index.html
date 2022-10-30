@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css">
-    <script defer src="scripts/cards.js" ></script>
-    <script defer src="scripts/index.js"></script>
-    <script defer src="scripts/validate.js"></script>
+    <script defer src="scripts/index.js" type="module"></script>
     <title>Место</title>
 </head>
+
 <body class="body">
     <div class="page">
         <header class="header">
-                <div class="header__logo"></div>
+            <div class="header__logo"></div>
         </header>
-            <main class="main-content">
-                <section class="profile">
-                    <img src="images/avatar.jpg" alt="Аватарка" class="profile__avatar">
-                    <div class="profile__info">
-                        <h1 class="profile__title">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" type="button" aria-label="кнопка редактирования"></button>
-                        <p class="profile__job">Исследователь океана</p>
-                    </div>
-                    <button class="profile__add-button" type="button" aria-label="кнопка добавления"></button>
-                </section>
-                <section class="elements">
-                    <ul class="elements__container">
-                    </ul>
-                </section>
-            </main>
+        <main class="main-content">
+            <section class="profile">
+                <img src="images/avatar.jpg" alt="Аватарка" class="profile__avatar">
+                <div class="profile__info">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button" type="button" aria-label="кнопка редактирования"></button>
+                    <p class="profile__job">Исследователь океана</p>
+                </div>
+                <button class="profile__add-button" type="button" aria-label="кнопка добавления"></button>
+            </section>
+            <section class="elements">
+                <ul class="elements__container">
+                </ul>
+            </section>
+        </main>
         <footer class="footer">
-                <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+            <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
         </footer>
     </div>
     <div class="popup popup_type_edit">
@@ -39,9 +39,11 @@
             <button class="popup__close" type="button" aria-label="кнопка закрытия"></button>
             <form class="popup__form" name="popup-form" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-name" placeholder="Имя" minlength="2" maxlength="40" required>
+                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-name"
+                    placeholder="Имя" minlength="2" maxlength="40" required>
                 <span class="popup__error" id="popup-name-error"></span>
-                <input type="text" class="popup__input popup__input_type_job" name="popup-job" id="popup-job" placeholder="О себе"  minlength="2" maxlength="200" required>
+                <input type="text" class="popup__input popup__input_type_job" name="popup-job" id="popup-job"
+                    placeholder="О себе" minlength="2" maxlength="200" required>
                 <span class="popup__error" id="popup-job-error"></span>
                 <button class="popup__save-btn popup__save-btn_inactive" type="submit" disabled>Сохранить</button>
             </form>
@@ -52,9 +54,11 @@
             <button class="popup__close" type="button"></button>
             <form class="popup__form" name="popup-form">
                 <h3 class="popup__title">Новое место</h3>
-                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-place" placeholder="Название" minlength="2" maxlength="30" required>
+                <input type="text" class="popup__input popup__input_type_name" name="popup-name" id="popup-place"
+                    placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__error" id="popup-place-error"></span>
-                <input type="url" class="popup__input popup__input_type_job" name="popup-job" id="popup-link" placeholder="Ссылка на картинку" required>
+                <input type="url" class="popup__input popup__input_type_job" name="popup-job" id="popup-link"
+                    placeholder="Ссылка на картинку" required>
                 <span class="popup__error" id="popup-link-error"></span>
                 <button class="popup__save-btn popup__save-btn_inactive" type="submit" disabled>Создать</button>
             </form>
@@ -64,7 +68,8 @@
         <div class="popup__container-image">
             <figure class="popup__figure">
                 <button class="popup__close" type="button"></button>
-                <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="Байкал" class="popup__image">
+                <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="Байкал"
+                    class="popup__image">
                 <figcaption class="popup__figcaption"></figcaption>
             </figure>
         </div>
@@ -75,9 +80,11 @@
             <img class="elements__img">
             <div class="elements__info">
                 <h2 class="elements__title"></h2>
-                <button class="elements__like" type="button" aria-label="кнопка выставления лайка или отмены лайка"></button>
+                <button class="elements__like" type="button"
+                    aria-label="кнопка выставления лайка или отмены лайка"></button>
             </div>
         </li>
     </template>
 </body>
+
 </html>
