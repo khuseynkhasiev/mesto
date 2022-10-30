@@ -1,3 +1,5 @@
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
 import {
   popupEdit,
   popupAdd,
@@ -9,6 +11,7 @@ import {
   nameInput,
   jobInput,
   formAdd,
+  formAddCard,
   placeName,
   imageLink,
   profileTitle,
@@ -16,16 +19,20 @@ import {
   profileEditButton,
   profileAddButton,
   cardTemplate,
-  cardsContainer
-} from './variables.js';
-import {
-  validationProfilePopup,
-  validationPlacePopup
-} from './FormValidator.js';
-import Card from './Card.js';
+  cardsContainer,
+  validationConfig
+} from './constans.js';
 import {
   initialCards
 } from './cards.js';
+import {
+  openPopup,
+  closePopup
+} from './utils.js';
+
+// создание экземляров класса валидации для формы редактирования и добавления карточки
+const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
+const validationPlacePopup = new FormValidator(popupAdd, validationConfig);
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -40,45 +47,7 @@ function handleProfileFormSubmit(evt) {
    * закрытие попапа после сохранения */
   closePopup(popupEdit);
 }
-
 formEdit.addEventListener('submit', handleProfileFormSubmit);
-
-// открытие попапа
-const openPopup = function (popup) {
-  popup.classList.add('popup_opened');
-
-  // слушатель для закрытия попапа через кнопку Escape
-  document.addEventListener('keydown', handleClosePopupByEsc);
-
-  // слушатель для закрытия попапа кликом на оверлей
-  popup.addEventListener('click', handleClosePopupByClick);
-}
-
-// закрытие попапа кликом на оверлей
-function handleClosePopupByClick(evt) {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(evt.target);
-  }
-}
-
-// закрытие попапа с через кнопку Escape
-function handleClosePopupByEsc(evt) {
-  if (evt.key === "Escape") {
-    const activePopup = document.querySelector('.popup_opened');
-    closePopup(activePopup);
-  }
-}
-
-// закрытие попапа
-const closePopup = function (popup) {
-  popup.classList.remove('popup_opened');
-
-  // удаление слушателя для закрытия через кнопку Escape
-  document.removeEventListener('keydown', handleClosePopupByEsc);
-
-  // удаление слушателя для закрытия попапа кликом на оверлей
-  popup.removeEventListener('click', handleClosePopupByClick);
-}
 
 // слушатель на клик открытие попапа редактирования
 profileEditButton.addEventListener('click', () => {
@@ -89,7 +58,7 @@ profileEditButton.addEventListener('click', () => {
 function openProfilePopup() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
-  validationProfilePopup.enableValidation();
+  openPopup(popupEdit);
 }
 
 // слушатель на клик открытие попапа добавления места
@@ -99,9 +68,8 @@ profileAddButton.addEventListener('click', () => {
 
 // функция открытия попапа добавления места
 function openPlacePopup() {
-  const formAdd = popupAdd.querySelector('.popup__form');
-  formAdd.reset();
-  validationPlacePopup.enableValidation();
+  formAddCard.reset();
+  openPopup(popupAdd);
 }
 
 // слушатель на клик закрытия попапа изображения
@@ -125,8 +93,9 @@ const renderCard = (cardItem) => {
 }
 //перебор карточек из массива объектов
 initialCards.reverse().forEach((cardObject) => {
-  const cardItem = new Card(cardObject, cardTemplate);
-  renderCard(cardItem);
+  //создание экземпляра класса карточки и добавление на страницу
+  renderCard(createCard(cardObject));
+
 });
 
 // добавление данных от пользователя для добавления карточки
@@ -136,13 +105,18 @@ function handleCardFormSubmit(evt) {
     name: placeName.value,
     link: imageLink.value
   }
-  const cardItem = new Card(item, cardTemplate)
-  renderCard(cardItem);
+  //создание экземпляра класса карточки и добавление на страницу
+  renderCard(createCard(item));
   closePopup(popupAdd);
 }
 
 formAdd.addEventListener('submit', handleCardFormSubmit);
 
-export {
-  openPopup
-};
+// создание экземпляра класса карточки
+function createCard(item) {
+  const cardItem = new Card(item, cardTemplate);
+  return cardItem;
+}
+
+validationPlacePopup.enableValidation();
+validationProfilePopup.enableValidation();
