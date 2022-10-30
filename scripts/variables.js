@@ -34,4 +34,25 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 const cardTemplate = document.querySelector('.cards-template').content;
 const cardsContainer = document.querySelector('.elements__container');
 
-export { popupImage, popupImageInfo, popupFigcaptionImage, popupEdit, popupAdd, popupEditCloseButton, popupAddCloseButton, popupImageCloseButton, formEdit, nameInput, jobInput, formAdd, placeName, imageLink, profileTitle, profileJob, profileEditButton, profileAddButton, cardTemplate, cardsContainer };
+export {
+    popupImage,
+    popupImageInfo,
+    popupFigcaptionImage,
+    popupEdit,
+    popupAdd,
+    popupEditCloseButton,
+    popupAddCloseButton,
+    popupImageCloseButton,
+    formEdit,
+    nameInput,
+    jobInput,
+    formAdd,
+    placeName,
+    imageLink,
+    profileTitle,
+    profileJob,
+    profileEditButton,
+    profileAddButton,
+    cardTemplate,
+    cardsContainer
+};
