@@ -21,6 +21,8 @@ const jobInput = formEdit.querySelector('.popup__input_type_job');
 const formAdd = popupAdd.querySelector('.popup__container');
 const placeName = formAdd.querySelector('.popup__input_type_name');
 const imageLink = formAdd.querySelector('.popup__input_type_job');
+const formAddCard = popupAdd.querySelector('.popup__form');
+
 
 //profile
 const profile = document.querySelector('.profile');
@@ -33,6 +35,15 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 
 const cardTemplate = document.querySelector('.cards-template').content;
 const cardsContainer = document.querySelector('.elements__container');
+
+// создаем объект для валидации
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-btn',
+    inactiveButtonClass: 'popup__save-btn_inactive',
+    inputErrorClass: 'popup__input_type_error'
+}
 
 export {
     popupImage,
@@ -47,6 +58,7 @@ export {
     nameInput,
     jobInput,
     formAdd,
+    formAddCard,
     placeName,
     imageLink,
     profileTitle,
@@ -54,5 +66,6 @@ export {
     profileEditButton,
     profileAddButton,
     cardTemplate,
-    cardsContainer
+    cardsContainer,
+    validationConfig
 };

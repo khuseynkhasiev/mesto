@@ -1,15 +1,4 @@
-import {
-  popupEdit,
-  popupAdd
-} from './variables.js';
-import {
-  openPopup
-} from './index.js';
-import {
-  validationConfig
-} from './validate.js';
-
-class FormValidator {
+export default class FormValidator {
   constructor(popupForm, validationConfig) {
     this._formSelector = validationConfig.formSelector;
     this._inputSelector = validationConfig.inputSelector;
@@ -121,14 +110,5 @@ class FormValidator {
       this._setEventListeners(formElement);
     })
     this._resetForm();
-    openPopup(this._popupForm);
   }
 }
-// создание экземляров класса валидации для формы редактирования и добавления карточки
-const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
-const validationPlacePopup = new FormValidator(popupAdd, validationConfig);
-
-export {
-  validationProfilePopup,
-  validationPlacePopup
-};
