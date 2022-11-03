@@ -8,7 +8,7 @@ export default class FormValidator {
     this._popupForm = popupForm;
   }
 
-  // Функция принимает массив полей
+  // метод принимает массив полей
   _hasInvalidInput = (inputList => {
     // проходим по этому массиву методом some
     return inputList.some((inputElement) => {
@@ -19,8 +19,8 @@ export default class FormValidator {
     })
   })
 
-  // функция сброса ошибок
-  _resetForm() {
+  // метод очистки ошибок и деактивации кнопки
+  resetForm() {
     const popupForm = this._popupForm.querySelector('.popup__form');
     if (this._popupForm.contains(popupForm)) {
 
@@ -61,7 +61,7 @@ export default class FormValidator {
     }
   }
 
-  // Функция принимает массив полей ввода
+  // Метод принимает массив полей ввода
   // и элемент кнопки, состояние которой нужно менять
   _toggleButtonState = (inputList, buttonElement) => {
     // Если есть хотя бы один невалидный инпут
@@ -109,6 +109,6 @@ export default class FormValidator {
       // передав ей элемент формы
       this._setEventListeners(formElement);
     })
-    this._resetForm();
+    //this._resetForm();
   }
 }

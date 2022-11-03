@@ -34,6 +34,9 @@ import {
 const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
 const validationPlacePopup = new FormValidator(popupAdd, validationConfig);
 
+validationPlacePopup.enableValidation();
+validationProfilePopup.enableValidation();
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Так мы можем определить свою логику отправки.
@@ -58,6 +61,7 @@ profileEditButton.addEventListener('click', () => {
 function openProfilePopup() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileJob.textContent;
+  validationProfilePopup.resetForm();
   openPopup(popupEdit);
 }
 
@@ -68,6 +72,7 @@ profileAddButton.addEventListener('click', () => {
 
 // функция открытия попапа добавления места
 function openPlacePopup() {
+  validationPlacePopup.resetForm();
   formAddCard.reset();
   openPopup(popupAdd);
 }
@@ -117,6 +122,3 @@ function createCard(item) {
   const cardItem = new Card(item, cardTemplate);
   return cardItem;
 }
-
-validationPlacePopup.enableValidation();
-validationProfilePopup.enableValidation();
