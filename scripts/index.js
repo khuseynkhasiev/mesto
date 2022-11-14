@@ -29,6 +29,7 @@ import {
   openPopup,
   closePopup
 } from './utils.js';
+import Section from './Section.js';
 
 // создание экземляров класса валидации для формы редактирования и добавления карточки
 const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
@@ -92,16 +93,6 @@ popupAddCloseButton.addEventListener('click', function () {
   closePopup(popupAdd);
 })
 
-//создание карточки в начало
-const renderCard = (cardItem) => {
-  cardsContainer.prepend(cardItem.generateCard());
-}
-//перебор карточек из массива объектов
-initialCards.reverse().forEach((cardObject) => {
-  //создание экземпляра класса карточки и добавление на страницу
-  renderCard(createCard(cardObject));
-
-});
 
 // добавление данных от пользователя для добавления карточки
 function handleCardFormSubmit(evt) {
@@ -111,14 +102,26 @@ function handleCardFormSubmit(evt) {
     link: imageLink.value
   }
   //создание экземпляра класса карточки и добавление на страницу
-  renderCard(createCard(item));
+  //renderCard(createCard(item));
+  section.addItem(createCard(item));
   closePopup(popupAdd);
 }
-
 formAdd.addEventListener('submit', handleCardFormSubmit);
 
 // создание экземпляра класса карточки
-function createCard(item) {
+const createCard = (item) => {
   const cardItem = new Card(item, cardTemplate);
-  return cardItem;
+  return cardItem.generateCard();
 }
+
+//передача параметров и создание экземпляра класса
+const section = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = createCard(item);
+    section.addItem(card);
+  }
+}, '.elements__container');
+
+//вызов метода класса Section
+section.renderItems();
