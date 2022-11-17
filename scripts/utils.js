@@ -1,4 +1,4 @@
-// открытие попапа
+/* // открытие попапа
 const openPopup = function (popup) {
     popup.classList.add('popup_opened');
 
@@ -36,4 +36,4 @@ function handleClosePopupByEsc(evt) {
 export {
     openPopup,
     closePopup
-}
+} */

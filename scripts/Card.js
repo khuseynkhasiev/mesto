@@ -3,9 +3,13 @@ import {
   popupImageInfo,
   popupFigcaptionImage
 } from './constans.js';
-import {
+/* import {
   openPopup
-} from './utils.js';
+} from './utils.js'; */
+
+import Popup from './Popup.js';
+import PopupWithImage from './PopupWithImage.js';
+
 export default class Card {
   constructor(card, templateSelector) {
     this._name = card.name;
@@ -33,14 +37,20 @@ export default class Card {
 
   //возвращяет увеличенное изображение с подписью
   _openCardImage(card) {
-    const elementImage = card.querySelector('.elements__img');
-    const elementTitle = card.querySelector('.elements__title');
 
-    popupImageInfo.src = elementImage.src;
-    popupImageInfo.alt = elementImage.alt;
-    popupFigcaptionImage.textContent = elementTitle.textContent;
+    const popupWithImage = new PopupWithImage(card);
+    popupWithImage.open();
+    /*     const elementImage = card.querySelector('.elements__img');
+        const elementTitle = card.querySelector('.elements__title');
 
-    openPopup(popupImage);
+        popupImageInfo.src = elementImage.src;
+        popupImageInfo.alt = elementImage.alt;
+        popupFigcaptionImage.textContent = elementTitle.textContent; */
+
+    //openPopup(popupImage);
+
+    const popupImageClass = new Popup(popupImage);
+    popupImageClass.open();
   }
 
   // слушатель для card

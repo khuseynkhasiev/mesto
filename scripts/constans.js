@@ -8,6 +8,7 @@ const popupEditCloseButton = popupEdit.querySelector('.popup__close');
 const popupAddCloseButton = popupAdd.querySelector('.popup__close');
 const popupImageCloseButton = popupImage.querySelector('.popup__close');
 
+
 // popupImage
 const popupImageInfo = popupImage.querySelector('.popup__image');
 const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption');

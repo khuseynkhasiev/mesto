@@ -2,10 +2,10 @@ export default class Section {
     constructor({
         items,
         renderer
-    }, cardsContainer) {
+    }, container) {
         this._items = items,
             this._renderer = renderer,
-            this._cardsContainer = document.querySelector(cardsContainer)
+            this._container = document.querySelector(container)
     }
 
     //перебор карточек из массива объектов
@@ -15,6 +15,6 @@ export default class Section {
 
     //добавление карточки в начало
     addItem(itemHtml) {
-        this._cardsContainer.prepend(itemHtml);
+        this._container.prepend(itemHtml);
     }
 }
