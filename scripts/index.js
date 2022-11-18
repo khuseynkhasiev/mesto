@@ -31,7 +31,10 @@ import {
 } from './utils.js'; */
 import Section from './Section.js';
 import Popup from './Popup.js';
+
 import PopupWithForm from './PopupWithForm.js';
+import UserInfo from './UserInfo.js';
+
 
 // создание экземляров класса валидации для формы редактирования и добавления карточки
 const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
@@ -126,12 +129,20 @@ function handleCardFormSubmit(evt) {
 //}
 //formEdit.addEventListener('submit', handleProfileFormSubmit);
 
+const userInfo = new UserInfo({
+  profileTitle,
+  profileJob
+});
+
 const popupWithFormEdit = new PopupWithForm({
   handleFormSubmit: (evt) => {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
     // Получите значение полей jobInput и nameInput из свойства value
-    profileTitle.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
+    /*     profileTitle.textContent = nameInput.value;
+        profileJob.textContent = jobInput.value; */
+
+    userInfo.setUserInfo(nameInput, jobInput);
+
     popupWithFormEdit.close();
   }
 }, popupEdit)

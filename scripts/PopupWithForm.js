@@ -21,7 +21,6 @@ export default class PopupWithForm extends Popup {
         return this._inputValues;
     }
     setEventListeners = () => {
-        console.log('сработал PopupWithForm.setEventListeners()');
         //слушатель на клик по иконке закрытие попапа
         this._popupSelector.querySelector('.popup__close').addEventListener('click', () => {
             this.close();
@@ -30,7 +29,6 @@ export default class PopupWithForm extends Popup {
     }
     close() {
         super.close();
-        console.log('сработал PopupWithForm.close()');
         this._form.reset();
     }
 }
