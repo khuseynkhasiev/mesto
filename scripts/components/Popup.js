@@ -33,11 +33,6 @@ export default class Popup {
 
     // закрытие попапа кликом на оверлей
     setEventListeners = (evt) => {
-        /*         //слушатель на клик по иконке закрытие попапа
-                this._popupSelector.querySelector('.popup__close').addEventListener('click', () => {
-                    this.close();
-                }) */
-
         if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
             this.close();
         }

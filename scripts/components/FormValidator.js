@@ -109,6 +109,5 @@ export default class FormValidator {
       // передав ей элемент формы
       this._setEventListeners(formElement);
     })
-    //this._resetForm();
   }
 }
