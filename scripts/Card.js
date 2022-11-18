@@ -1,23 +1,14 @@
-import {
-  popupImage,
-  popupImageInfo,
-  popupFigcaptionImage
-} from './constans.js';
-/* import {
-  openPopup
-} from './utils.js'; */
-
-import Popup from './Popup.js';
-import PopupWithImage from './PopupWithImage.js';
-
 export default class Card {
-  constructor(card, templateSelector) {
+  constructor(card, templateSelector, {
+    handleCardClick
+  }) {
     this._name = card.name;
     this._link = card.link;
     this._templateSelector = templateSelector;
     this._element = this._getTemplate();
     this._elementImage = this._element.querySelector('.elements__img');
     this._elmentTitle = this._element.querySelector('.elements__title');
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -35,28 +26,10 @@ export default class Card {
     return this._element;
   }
 
-  //возвращяет увеличенное изображение с подписью
-  _openCardImage(card) {
-
-    const popupWithImage = new PopupWithImage(card);
-    popupWithImage.open();
-    /*     const elementImage = card.querySelector('.elements__img');
-        const elementTitle = card.querySelector('.elements__title');
-
-        popupImageInfo.src = elementImage.src;
-        popupImageInfo.alt = elementImage.alt;
-        popupFigcaptionImage.textContent = elementTitle.textContent; */
-
-    //openPopup(popupImage);
-
-    const popupImageClass = new Popup(popupImage);
-    popupImageClass.open();
-  }
-
   // слушатель для card
   _setCardListeners(card) {
     // установка слушателя для открытия попапа картинки
-    this._elementImage.addEventListener('click', () => this._openCardImage(this._element));
+    this._elementImage.addEventListener('click', () => this._handleCardClick(card));
 
     //для лайка
     const cardLike = card.querySelector('.elements__like');

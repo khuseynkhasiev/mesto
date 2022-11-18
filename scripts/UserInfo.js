@@ -2,7 +2,6 @@ export default class UserInfo {
     constructor(data) {
         this._name = data.profileTitle;
         this._about = data.profileJob;
-        console.log(data.profileTitle.textContent);
     }
 
     getUserInfo() {

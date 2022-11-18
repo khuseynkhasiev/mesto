@@ -11,6 +11,7 @@ export default class Popup {
 
         // слушатель для закрытия попапа кликом на оверлей
         this._popupSelector.addEventListener('click', this.setEventListeners);
+
     }
     // закрытие попапа
     close() {

@@ -33,6 +33,8 @@ import Section from './Section.js';
 import Popup from './Popup.js';
 
 import PopupWithForm from './PopupWithForm.js';
+import PopupWithImage from './PopupWithImage.js';
+
 import UserInfo from './UserInfo.js';
 
 
@@ -166,7 +168,14 @@ popupWithFormAdd.setEventListeners();
 
 // создание экземпляра класса карточки
 const createCard = (item) => {
-  const cardItem = new Card(item, cardTemplate);
+  const cardItem = new Card(item, cardTemplate, {
+    handleCardClick: (card) => {
+      const popupImageClass = new Popup(popupImage);
+      popupImageClass.open();
+      const popupWithImage = new PopupWithImage(card);
+      popupWithImage.open();
+    }
+  });
   return cardItem.generateCard();
 }
 
