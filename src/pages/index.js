@@ -1,3 +1,6 @@
+import './index.css'; // добавили импорт главного файла стилей 
+
+
 import FormValidator from '../scripts/components/FormValidator.js';
 import Card from '../scripts/components/Card.js';
 import {
@@ -14,10 +17,10 @@ import {
   profileAddButton,
   cardTemplate,
   validationConfig
-} from '../scripts/constans.js';
+} from '../scripts/utils/constans.js';
 import {
   initialCards
-} from '../scripts/cards.js';
+} from '../scripts/utils/cards.js';
 import Section from '../scripts/components/Section.js';
 import Popup from '../scripts/components/Popup.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';

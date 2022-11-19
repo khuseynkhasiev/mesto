@@ -2,7 +2,7 @@ import Popup from './Popup.js';
 import {
     popupImageInfo,
     popupFigcaptionImage
-} from '../constans.js';
+} from '../utils/constans.js';
 
 export default class PopupWithImage extends Popup {
     constructor(card) {
