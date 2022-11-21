@@ -3,16 +3,17 @@ export default class UserInfo {
         this._name = data.profileTitle;
         this._about = data.profileJob;
     }
-
-    getUserInfo() {
+    // возвращяем объект с данными профиля
+    getUserInfo = () => {
         const userInfo = {
-            name: this._name,
-            about: this._about
+            name: this._name.textContent,
+            about: this._about.textContent
         }
         return userInfo;
     }
-    setUserInfo(name, jobInput) {
-        this._name.textContent = name.value
-        this._about.textContent = jobInput.value;
+    // вставляем данные в профиль
+    setUserInfo(inputValues) {
+        this._name.textContent = inputValues.name;
+        this._about.textContent = inputValues.about;
     }
 }

@@ -16,12 +16,12 @@ const popupFigcaptionImage = popupImage.querySelector('.popup__figcaption');
 // formEdit
 const formEdit = popupEdit.querySelector('.popup__container');
 const nameInput = formEdit.querySelector('.popup__input_type_name');
-const jobInput = formEdit.querySelector('.popup__input_type_job');
+const jobInput = formEdit.querySelector('.popup__input_type_about');
 
 // formAdd
 const formAdd = popupAdd.querySelector('.popup__container');
-const placeName = formAdd.querySelector('.popup__input_type_name');
-const imageLink = formAdd.querySelector('.popup__input_type_job');
+const placeName = formAdd.querySelector('.popup__input_type_place');
+const imageLink = formAdd.querySelector('.popup__input_type_url');
 const formAddCard = popupAdd.querySelector('.popup__form');
 
 

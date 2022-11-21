@@ -6,11 +6,8 @@ import Card from '../scripts/components/Card.js';
 import {
   popupEdit,
   popupAdd,
-  popupImage,
   nameInput,
   jobInput,
-  placeName,
-  imageLink,
   profileTitle,
   profileJob,
   profileEditButton,
@@ -22,7 +19,6 @@ import {
   initialCards
 } from '../scripts/utils/cards.js';
 import Section from '../scripts/components/Section.js';
-import Popup from '../scripts/components/Popup.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import UserInfo from '../scripts/components/UserInfo.js';
@@ -35,9 +31,6 @@ const validationPlacePopup = new FormValidator(popupAdd, validationConfig);
 validationPlacePopup.enableValidation();
 validationProfilePopup.enableValidation();
 
-const popupEditClass = new Popup(popupEdit);
-const popupAddClass = new Popup(popupAdd);
-
 // слушатель на клик открытие попапа редактирования
 profileEditButton.addEventListener('click', () => {
   openProfilePopup();
@@ -45,12 +38,16 @@ profileEditButton.addEventListener('click', () => {
 
 // функция открытия попапа редактирования
 function openProfilePopup() {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileJob.textContent;
-  validationProfilePopup.resetForm();
-  //openPopup(popupEdit);
 
-  popupEditClass.open();
+  //получаем объект с данными профиля
+  const profileObject = userInfo.getUserInfo();
+  nameInput.value = profileObject.name;
+  jobInput.value = profileObject.about;
+
+  //сбрасываем валидацию
+  validationProfilePopup.resetForm();
+
+  popupWithFormEdit.open();
 }
 
 // слушатель на клик открытие попапа добавления места
@@ -61,7 +58,7 @@ profileAddButton.addEventListener('click', () => {
 // функция открытия попапа добавления места
 function openPlacePopup() {
   validationPlacePopup.resetForm();
-  popupAddClass.open();
+  popupWithFormAdd.open();
 }
 
 const userInfo = new UserInfo({
@@ -69,39 +66,33 @@ const userInfo = new UserInfo({
   profileJob
 });
 
-const popupWithFormEdit = new PopupWithForm({
-  handleFormSubmit: (evt) => {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    // Получите значение полей jobInput и nameInput из свойства value
-    userInfo.setUserInfo(nameInput, jobInput);
 
-    popupWithFormEdit.close();
+const popupWithFormEdit = new PopupWithForm({
+
+  // получаем колбэком данные из инпутов
+  handleFormSubmit: (unputValues) => {
+    // подставляем данные в профиль
+    userInfo.setUserInfo(unputValues);
   }
-}, popupEdit)
+}, '.popup_type_edit')
 popupWithFormEdit.setEventListeners();
 
 const popupWithFormAdd = new PopupWithForm({
-  handleFormSubmit: (evt) => {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    const item = {
-      name: placeName.value,
-      link: imageLink.value
-    }
+  // получаем колбэком данные из инпутов
+  handleFormSubmit: (unputValues) => {
+
     //создание экземпляра класса карточки и добавление на страницу
-    section.addItem(createCard(item));
-    popupWithFormAdd.close();
+    section.addItem(createCard(unputValues));
   }
-}, popupAdd)
+}, '.popup_type_add')
 popupWithFormAdd.setEventListeners();
 
+const popupWithImage = new PopupWithImage('.popup_type_image');
 // создание экземпляра класса карточки
 const createCard = (item) => {
   const cardItem = new Card(item, cardTemplate, {
     handleCardClick: (card) => {
-      const popupImageClass = new Popup(popupImage);
-      popupImageClass.open();
-      const popupWithImage = new PopupWithImage(card);
-      popupWithImage.open();
+      popupWithImage.open(card);
     }
   });
   return cardItem.generateCard();

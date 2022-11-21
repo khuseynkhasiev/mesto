@@ -5,16 +5,16 @@ import {
 } from '../utils/constans.js';
 
 export default class PopupWithImage extends Popup {
-    constructor(card) {
-        super();
-        this._card = card;
+    constructor(popupSelector) {
+        super(popupSelector);
     }
-    open() {
-        const elementImage = this._card.querySelector('.elements__img');
-        const elementTitle = this._card.querySelector('.elements__title');
+    open(card) {
+        this._elementImage = card.querySelector('.elements__img');
+        this._elementTitle = card.querySelector('.elements__title');
 
-        popupImageInfo.src = elementImage.src;
-        popupImageInfo.alt = elementImage.alt;
-        popupFigcaptionImage.textContent = elementTitle.textContent;
+        popupImageInfo.src = this._elementImage.src;
+        popupImageInfo.alt = this._elementImage.alt;
+        popupFigcaptionImage.textContent = this._elementTitle.textContent;
+        super.open();
     }
 }
