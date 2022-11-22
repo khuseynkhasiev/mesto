@@ -13,7 +13,9 @@ import {
   profileEditButton,
   profileAddButton,
   cardTemplate,
-  validationConfig
+  validationConfig,
+  popupImageInfo,
+  popupFigcaptionImage
 } from '../scripts/utils/constans.js';
 import {
   initialCards
@@ -80,19 +82,24 @@ popupWithFormEdit.setEventListeners();
 const popupWithFormAdd = new PopupWithForm({
   // получаем колбэком данные из инпутов
   handleFormSubmit: (unputValues) => {
-
     //создание экземпляра класса карточки и добавление на страницу
     section.addItem(createCard(unputValues));
   }
 }, '.popup_type_add')
 popupWithFormAdd.setEventListeners();
 
-const popupWithImage = new PopupWithImage('.popup_type_image');
+const popupWithImage = new PopupWithImage('.popup_type_image', popupImageInfo,
+  popupFigcaptionImage);
+
+
 // создание экземпляра класса карточки
 const createCard = (item) => {
   const cardItem = new Card(item, cardTemplate, {
-    handleCardClick: (card) => {
-      popupWithImage.open(card);
+    /*     handleCardClick: (card) => {
+          popupWithImage.open(card);
+        } */
+    handleCardClick: (place, url) => {
+      popupWithImage.open(place, url);
     }
   });
   return cardItem.generateCard();

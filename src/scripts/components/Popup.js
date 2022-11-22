@@ -11,6 +11,10 @@ export default class Popup {
     // закрытие попапа 
     close() {
         this.popupSelector.classList.remove('popup_opened');
+        this._removeEventListeners;
+    }
+
+    _removeEventListeners() {
         // удаление слушателя для закрытия через кнопку Escape 
         document.removeEventListener('keydown', this._handleEscClose);
         // удаление слушателя для закрытия попапа кликом на оверлей 
@@ -18,6 +22,7 @@ export default class Popup {
         // удаление слушателя для закрытия попапа кликом на кнопку
         this._popupButtonClose.removeEventListener('click', this._handleButtonClose);
     }
+
     // закрытие попапа клавишей Esc 
     _handleEscClose = (evt) => {
         if (evt.key === "Escape") {

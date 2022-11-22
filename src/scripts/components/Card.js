@@ -2,8 +2,8 @@ export default class Card {
   constructor(card, templateSelector, {
     handleCardClick
   }) {
-    this._name = card.name;
-    this._link = card.link;
+    this._place = card.place;
+    this._url = card.url;
     this._templateSelector = templateSelector;
     this._element = this._getTemplate();
     this._elementImage = this._element.querySelector('.elements__img');
@@ -19,9 +19,9 @@ export default class Card {
     return cardTemplate;
   }
   generateCard() {
-    this._elmentTitle.textContent = this._name;
-    this._elementImage.alt = this._name;
-    this._elementImage.src = this._link;
+    this._elmentTitle.textContent = this._place;
+    this._elementImage.alt = this._place;
+    this._elementImage.src = this._url;
 
     // установка слушателя для лайка и удаления карточки
     this._setCardListeners(this._element);
@@ -32,7 +32,9 @@ export default class Card {
   // слушатель для card
   _setCardListeners() {
     // установка слушателя для открытия попапа картинки
-    this._elementImage.addEventListener('click', () => this._handleCardClick(this._element));
+
+    this._elementImage.addEventListener('click', () => this._handleCardClick(this._place, this._url));
+
 
     //для лайка
     this._elementLike.addEventListener('click', this._likeCard);

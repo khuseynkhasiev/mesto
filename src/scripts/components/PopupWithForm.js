@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
     }
 
     // отменяем стандартную отправку, добавляем методы класса
-    _setInputValues = (evt) => {
+    _handleSubmit = (evt) => {
         evt.preventDefault();
         this._handleFormSubmit(this._getInputValues());
         this.close();
@@ -27,7 +27,12 @@ export default class PopupWithForm extends Popup {
     setEventListeners() {
         super.setEventListeners();
         // ставим слушатель на сабмит
-        this._form.addEventListener('submit', this._setInputValues);
+        this._form.addEventListener('submit', this._handleSubmit);
+    }
+
+    _removeEventListeners() {
+        super._removeEventListeners();
+        this._form.removeEventListener('submit', this._handleSubmit);
     }
     close() {
         super.close();
