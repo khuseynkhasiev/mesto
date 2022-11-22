@@ -77,7 +77,6 @@ const popupWithFormEdit = new PopupWithForm({
     userInfo.setUserInfo(unputValues);
   }
 }, '.popup_type_edit')
-popupWithFormEdit.setEventListeners();
 
 const popupWithFormAdd = new PopupWithForm({
   // получаем колбэком данные из инпутов
@@ -86,7 +85,6 @@ const popupWithFormAdd = new PopupWithForm({
     section.addItem(createCard(unputValues));
   }
 }, '.popup_type_add')
-popupWithFormAdd.setEventListeners();
 
 const popupWithImage = new PopupWithImage('.popup_type_image', popupImageInfo,
   popupFigcaptionImage);

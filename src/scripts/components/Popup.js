@@ -6,12 +6,12 @@ export default class Popup {
     // открытие попапа 
     open() {
         this.popupSelector.classList.add('popup_opened');
-        this.setEventListeners();
+        this._setEventListeners();
     }
     // закрытие попапа 
     close() {
         this.popupSelector.classList.remove('popup_opened');
-        this._removeEventListeners;
+        this._removeEventListeners();
     }
 
     _removeEventListeners() {
@@ -43,7 +43,7 @@ export default class Popup {
         }
     }
 
-    setEventListeners() {
+    _setEventListeners() {
         // слушатель для закрытия попапа через кнопку Escape 
         document.addEventListener('keydown', this._handleEscClose);
         // слушатель для закрытия попапа кликом на оверлей 
