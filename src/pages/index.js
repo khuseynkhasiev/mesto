@@ -136,7 +136,7 @@ section.renderItems();
   }) */
 
 
-/* fetch('https://mesto.nomoreparties.co/v1/cohort-54/cards', {
+/* fetch('https://mesto.nomoreparties.co/v1/cohort-54/cards ', {
     headers: {
       authorization: '0abf54cd-edc4-4fb9-9a14-bce409a2bf77'
     }
@@ -145,4 +145,6 @@ section.renderItems();
   .then((data) => {
     console.log(data);
   })
-  .catch(res => console.log(`Ошибка: ${res}`)) */
+  .catch(res => {
+    console.log(`Ошибка: ${res}`)
+  }) */
