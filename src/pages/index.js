@@ -25,7 +25,6 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 
-
 // создание экземляров класса валидации для формы редактирования и добавления карточки
 const validationProfilePopup = new FormValidator(popupEdit, validationConfig);
 const validationPlacePopup = new FormValidator(popupAdd, validationConfig);
@@ -114,3 +113,36 @@ const section = new Section({
 
 //вызов метода класса Section
 section.renderItems();
+
+/* fetch('https://mesto.nomoreparties.co/v1/cohort-54/cards', {
+    headers: {
+      authorization: '0abf54cd-edc4-4fb9-9a14-bce409a2bf77'
+    }
+  })
+  .then(res => res.json())
+  .then((result) => {
+    console.log(result);
+  }); */
+
+
+/* fetch('https://nomoreparties.co/v1/cohort-54/users/me', {
+    headers: {
+      authorization: '0abf54cd-edc4-4fb9-9a14-bce409a2bf77'
+    }
+  })
+  .then(res => res.json())
+  .then((date) => {
+    console.log(date);
+  }) */
+
+
+/* fetch('https://mesto.nomoreparties.co/v1/cohort-54/cards', {
+    headers: {
+      authorization: '0abf54cd-edc4-4fb9-9a14-bce409a2bf77'
+    }
+  })
+  .then(res => res.json())
+  .then((data) => {
+    console.log(data);
+  })
+  .catch(res => console.log(`Ошибка: ${res}`)) */
