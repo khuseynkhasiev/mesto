@@ -16,11 +16,14 @@
         </header>
         <main class="main-content">
             <section class="profile">
-                <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                <div class="profile__hover">
+                    <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                    <img src="<%=require('./images/avatar__edit-pen.svg')%>" class="profile__edit-pen">
+                </div>
                 <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <h1 class="profile__title"></h1>
                     <button class="profile__edit-button" type="button" aria-label="кнопка редактирования"></button>
-                    <p class="profile__job">Исследователь океана</p>
+                    <p class="profile__job"></p>
                 </div>
                 <button class="profile__add-button" type="button" aria-label="кнопка добавления"></button>
             </section>
@@ -53,10 +56,10 @@
             <button class="popup__close" type="button"></button>
             <form class="popup__form" name="popup-form-add">
                 <h3 class="popup__title">Новое место</h3>
-                <input type="text" class="popup__input popup__input_type_place" name="place" id="popup-place"
+                <input type="text" class="popup__input popup__input_type_place" name="name" id="popup-place"
                     placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__error" id="popup-place-error"></span>
-                <input type="url" class="popup__input popup__input_type_url" name="url" id="popup-link"
+                <input type="url" class="popup__input popup__input_type_url" name="link" id="popup-link"
                     placeholder="Ссылка на картинку" required>
                 <span class="popup__error" id="popup-link-error"></span>
                 <button class="popup__save-btn popup__save-btn_inactive" type="submit" disabled>Создать</button>
@@ -73,14 +76,43 @@
             </figure>
         </div>
     </div>
+    <div class="popup popup_type_delete">
+        <div class="popup__container">
+            <button class="popup__close" type="button" aria-label="кнопка закрытия"></button>
+            <form class="popup__form" name="popup-form-delete" novalidate>
+                <h3 class="popup__title popup__title_theme_delete">Вы уверены?</h3>
+                <button class="popup__save-btn popup__card_delete save-btn_theme_delete" type="button">Да</button>
+                <!-- переделаТь на сабмит -->
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_avatar">
+        <div class="popup__container">
+            <button class="popup__close" type="button"></button>
+            <form class="popup__form" name="popup-form-add">
+                <h3 class="popup__title">Обновить аватар</h3>
+                <input type="url" class="popup__input popup__input_type_url" name="link" id="popup-link"
+                    placeholder="Ссылка на аватар" required>
+                <span class="popup__error" id="popup-link-error"></span>
+                <button class="popup__save-btn popup__save-btn_inactive popup__save-btn_theme_avatar" type="submit"
+                    disabled>Сохранить</button>
+            </form>
+        </div>
+    </div>
     <template class="cards-template">
         <li class="elements__el">
-            <button class="elements__trash" type="button" aria-label="кнопка удаления карточки"></button>
+            <button class="elements__trash elements__trash_visible" type="button"
+                aria-label="кнопка удаления карточки"></button>
             <img class="elements__img">
             <div class="elements__info">
                 <h2 class="elements__title"></h2>
-                <button class="elements__like" type="button"
-                    aria-label="кнопка выставления лайка или отмены лайка"></button>
+                <div class="elements__counter">
+                    <button class="elements__like" type="button"
+                        aria-label="кнопка выставления лайка или отмены лайка"></button>
+                    <p class="elements__number">0</p>
+                </div>
+                <!--                 <button class="elements__like" type="button"
+                    aria-label="кнопка выставления лайка или отмены лайка"></button> -->
             </div>
         </li>
     </template>

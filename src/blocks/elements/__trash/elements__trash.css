@@ -1,4 +1,5 @@
 .elements__trash{
+    visibility: hidden;
     background: none;
     background-image: url(../../../images/trash.svg);
     width: 18px;
