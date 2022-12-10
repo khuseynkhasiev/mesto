@@ -18,7 +18,7 @@
         <main class="main-content">
             <section class="profile">
                 <div class="profile__hover">
-                    <img src="<%=require('./images/avatar.jpg')%>" alt="Аватарка" class="profile__avatar">
+                    <img src="<%=require('./images/preloader2.gif')%>" alt="Аватарка" class="profile__avatar">
                     <img src="<%=require('./images/avatar__edit-pen.svg')%>" class="profile__edit-pen">
                 </div>
                 <div class="profile__info">
@@ -82,8 +82,7 @@
             <button class="popup__close" type="button" aria-label="кнопка закрытия"></button>
             <form class="popup__form" name="popup-form-delete" novalidate>
                 <h3 class="popup__title popup__title_theme_delete">Вы уверены?</h3>
-                <button class="popup__save-btn popup__card_delete save-btn_theme_delete" type="button">Да</button>
-                <!-- переделаТь на сабмит -->
+                <button class="popup__save-btn popup__card_delete save-btn_theme_delete" type="submit">Да</button>
             </form>
         </div>
     </div>
@@ -110,7 +109,7 @@
                 <div class="elements__counter">
                     <button class="elements__like" type="button"
                         aria-label="кнопка выставления лайка или отмены лайка"></button>
-                    <p class="elements__number">0</p>
+                    <p class="elements__number"></p>
                 </div>
                 <!--                 <button class="elements__like" type="button"
                     aria-label="кнопка выставления лайка или отмены лайка"></button> -->
