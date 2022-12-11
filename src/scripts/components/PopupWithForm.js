@@ -19,24 +19,26 @@ export default class PopupWithForm extends Popup {
         return this._inputValues;
     }
 
+    // замыкание
     changeSubmitHandler(newSubmitHandler) {
         this._handleFormSubmit = newSubmitHandler;
-        //this._setEventListeners();
     }
 
     // отменяем стандартную отправку, добавляем методы класса
     _handleSubmit = (evt) => {
         evt.preventDefault();
-        this._buttonName.textContent = 'Сохранение...'
         this._handleFormSubmit(this._getInputValues());
     }
+
     _setEventListeners() {
         super._setEventListeners();
+
 
         // ставим слушатель на сабмит
         this._form.addEventListener('submit', this._handleSubmit);
     }
 
+    // удаление слушаталей
     _removeEventListeners() {
         super._removeEventListeners();
         this._form.removeEventListener('submit', this._handleSubmit);
@@ -48,7 +50,6 @@ export default class PopupWithForm extends Popup {
         }, 500)
     }
     open() {
-        this._buttonName.textContent = 'Сохранить';
         super.open();
     }
 }

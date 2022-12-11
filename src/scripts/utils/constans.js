@@ -4,6 +4,11 @@ const popupAdd = document.querySelector('.popup_type_add');
 const popupImage = document.querySelector('.popup_type_image');
 const popupProfileAvatar = document.querySelector('.popup_type_avatar');
 
+// popups button
+const popupAddButton = popupAdd.querySelector('.popup__save-btn');
+const popupEditButton = popupEdit.querySelector('.popup__save-btn');
+const popupProfileAvatarButton = popupProfileAvatar.querySelector('.popup__save-btn');
+
 
 // popups close button
 const popupEditCloseButton = popupEdit.querySelector('.popup__close');
@@ -38,11 +43,6 @@ const profileAddButton = profile.querySelector('.profile__add-button');
 
 const cardTemplate = document.querySelector('.cards-template').content;
 const cardsContainer = document.querySelector('.elements__container');
-
-
-const buttonDeleteCard = document.querySelector('.popup__card_delete');
-
-const elementTrashCard = document.querySelector('.elements__trash');
 
 const avatarProfile = document.querySelector('.profile__avatar');
 const avatarProfileEdit = document.querySelector('.profile__hover');
@@ -89,9 +89,10 @@ export {
     cardTemplate,
     cardsContainer,
     validationConfig,
-    buttonDeleteCard,
-    elementTrashCard,
     avatarProfile,
     avatarProfileEdit,
-    apiConfig
+    apiConfig,
+    popupAddButton,
+    popupEditButton,
+    popupProfileAvatarButton
 };
