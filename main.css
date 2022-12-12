@@ -20,7 +20,7 @@
 .elements__trash{background:none;background-image:url(ce3b64935accf9b8212e.svg);background-repeat:no-repeat;background-size:contain;border:none;height:19px;position:absolute;right:20px;top:20px;visibility:hidden;width:18px}.elements__trash:hover{cursor:pointer;opacity:.6}
 .elements__el{background:#fff;border-radius:10px;max-width:282px;min-height:361px;position:relative;width:100%}
 .elements__info{align-items:center;-moz-column-gap:20px;column-gap:20px;display:flex;justify-content:space-between;margin:0 21px;max-width:246px;padding:21px 0}
-.elements__like{background:none;background-image:url(1ad06e85f169668a1f36.svg);border:none;height:19px;width:22px}.elements__like:hover{cursor:pointer;opacity:.5}.elements__like_active{background-image:url(35948469632d0421d697.svg)}
+.elements__like{background:none;background-image:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;border:none;height:19px;width:22px}.elements__like:hover{cursor:pointer;opacity:.5}.elements__like_active{background-image:url(35948469632d0421d697.svg);background-repeat:no-repeat}
 .elements__title{color:#000;font-family:Inter,Arial,"sans-serif";font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:195px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .elements__number{color:#000;font-family:Inter,Arial,"sans-serif";font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:3px 0 0;text-align:center}
 .elements__counter{align-items:center;display:flex;flex-direction:column;justify-content:center}
