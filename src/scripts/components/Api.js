@@ -8,7 +8,7 @@ export default class Api {
     }
 
     getAllPromise() {
-        return Promise.all([this.getProfileInfo(), this.getInitialCards(), this.getAvatarProfile()])
+        return Promise.all([this.getProfileInfo(), this.getInitialCards()])
     }
 
     // проверка ответа
@@ -26,7 +26,6 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     // редактирования имени профиля на сервере
@@ -43,7 +42,6 @@ export default class Api {
                 })
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     // получение карточек от сервера
@@ -52,7 +50,6 @@ export default class Api {
                 headers: this._headers,
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     //отправка новой карточки на сервер
@@ -69,7 +66,6 @@ export default class Api {
                 })
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     // получение аватара профиля
@@ -78,8 +74,6 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
-
     }
 
     // изменение аватара профиля
@@ -92,7 +86,6 @@ export default class Api {
                 })
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     // удалание карточки
@@ -102,7 +95,6 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
     // добавление лайка карточке
     putCardLike(id) {
@@ -111,7 +103,6 @@ export default class Api {
                 headers: this._headers,
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 
     // удаление лайка карточки
@@ -121,6 +112,5 @@ export default class Api {
                 headers: this._headers
             })
             .then(res => this._checkResponse(res))
-            .catch(error => console.log(error))
     }
 }

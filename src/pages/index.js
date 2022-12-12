@@ -22,7 +22,8 @@ import {
   apiConfig,
   popupAddButton,
   popupEditButton,
-  popupProfileAvatarButton
+  popupProfileAvatarButton,
+  userId
 } from '../scripts/utils/constans.js';
 import Section from '../scripts/components/Section.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
@@ -52,19 +53,22 @@ const api = new Api(
   apiConfig
 );
 
+
 const userInfo = new UserInfo({
   profileTitle,
-  profileJob
+  profileJob,
+  avatarProfile,
+  userId
 });
 
-let userId; // получаем userId для передачи в класс Card
 
 api.getAllPromise().then(data => {
   const [getProfileInfo,
-    getInitialCards, getAvatarProfile
+    getInitialCards
   ] = data;
+
+  // подгружаем данные профиля
   userInfo.setUserInfo(getProfileInfo);
-  userId = getProfileInfo._id;
 
   //передача параметров и создание экземпляра класса
   const section = new Section({
@@ -74,9 +78,6 @@ api.getAllPromise().then(data => {
       section.addItem(card);
     }
   }, '.elements__container');
-
-  //загружаем изначальную аватарку с сервера
-  avatarProfile.src = getAvatarProfile.avatar
 
   //вызов метода класса Section
   section.renderItems();
@@ -95,6 +96,9 @@ api.getAllPromise().then(data => {
         })
         .catch(err => {
           return console.log(err)
+        }).finally(() => {
+          // возвращяем дефолтное значение кнопки добавить карточку
+          popupAddButton.textContent = 'Создать';
         })
     }
   }, '.popup_type_add')
@@ -103,9 +107,6 @@ api.getAllPromise().then(data => {
   function openPlacePopup() {
     validationPlacePopup.resetForm();
 
-    // возвращяем дефолтное значение кнопки добавить карточку
-    popupAddButton.textContent = 'Сохранить'
-
     popupWithFormAdd.open();
   }
 
@@ -113,9 +114,10 @@ api.getAllPromise().then(data => {
   profileAddButton.addEventListener('click', () => {
     openPlacePopup();
   })
-}).catch(err => {
+}).catch((err) => {
   return console.log(err)
 })
+
 
 
 // отправляем данные профиля на сервер и после подставляем в профиль
@@ -131,6 +133,10 @@ const popupWithFormEdit = new PopupWithForm({
       })
       .catch(err => {
         return console.log(err)
+      })
+      .finally(() => {
+        // возвращяем дефолтное имя кнопки
+        popupEditButton.textContent = 'Сохранить'
       })
   }
 }, '.popup_type_edit')
@@ -177,7 +183,7 @@ const createCard = (item) => {
           })
       })
     }
-  }, userId);
+  }, userInfo.userId);
   // генерируем и возвращяем новую карточку
   return cardItem.generateCard();
 }
@@ -187,30 +193,27 @@ const createCard = (item) => {
 const popupAvatar = new PopupWithForm({
     handleFormSubmit: (unputValues) => {
       api.patchAvatarProfile(unputValues.link)
-        .then(() => {
-          api.getAvatarProfile()
-            .then((data) => {
-              popupProfileAvatarButton.textContent = 'Сохранение...';
-              avatarProfile.src = data.avatar;
-              popupAvatar.close();
-            })
-            .catch(err => {
-              return console.log(err)
-            })
+        .then((data) => {
+          popupProfileAvatarButton.textContent = 'Сохранение...';
+
+          userInfo.setUserInfo(data);
+          popupAvatar.close();
         })
         .catch(err => {
           return console.log(err)
+        })
+        .finally(() => {
+          // возвращяем дефолное имя кнопки
+          popupProfileAvatarButton.textContent = 'Сохранить'
         })
     }
   },
   '.popup_type_avatar'
 )
 
-
 // открытие попапа при клике на аватар
 avatarProfileEdit.addEventListener('click', () => {
   validationProfileAvatarPopup.resetForm();
-  popupProfileAvatarButton.textContent = 'Сохранить'
   popupAvatar.open();
 })
 
@@ -223,15 +226,12 @@ profileEditButton.addEventListener('click', () => {
 // функция открытия попапа редактирования
 function openProfilePopup() {
   //получаем объект с данными профиля
-  const profileObject = userInfo.getUserInfo();
-  nameInput.value = profileObject.name;
-  jobInput.value = profileObject.about;
+  popupWithFormEdit.setInputValues(userInfo.getUserInfo());
+  /*   nameInput.value = profileObject.name;
+    jobInput.value = profileObject.about; */
 
   //сбрасываем валидацию
   validationProfilePopup.resetForm();
-
-  // возвращяем дефолтное имя кнопки
-  popupEditButton.textContent = 'Сохранить'
 
   //открываем попап редактирования
   popupWithFormEdit.open();

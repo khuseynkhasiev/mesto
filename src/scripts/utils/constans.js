@@ -47,6 +47,9 @@ const cardsContainer = document.querySelector('.elements__container');
 const avatarProfile = document.querySelector('.profile__avatar');
 const avatarProfileEdit = document.querySelector('.profile__hover');
 
+let userId; // получаем userId для передачи в класс Card
+
+
 
 const apiConfig = {
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-54/',
@@ -94,5 +97,6 @@ export {
     apiConfig,
     popupAddButton,
     popupEditButton,
-    popupProfileAvatarButton
+    popupProfileAvatarButton,
+    userId
 };

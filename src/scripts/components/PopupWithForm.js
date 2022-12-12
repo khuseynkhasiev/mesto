@@ -19,6 +19,12 @@ export default class PopupWithForm extends Popup {
         return this._inputValues;
     }
 
+    setInputValues(data) {
+        this._inputList.forEach((input) => {
+            input.value = data[input.name];
+        })
+    }
+
     // замыкание
     changeSubmitHandler(newSubmitHandler) {
         this._handleFormSubmit = newSubmitHandler;
@@ -48,8 +54,5 @@ export default class PopupWithForm extends Popup {
         setTimeout(() => {
             this._form.reset()
         }, 500)
-    }
-    open() {
-        super.open();
     }
 }

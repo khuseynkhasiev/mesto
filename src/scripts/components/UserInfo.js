@@ -2,6 +2,8 @@ export default class UserInfo {
     constructor(data) {
         this._name = data.profileTitle;
         this._about = data.profileJob;
+        this._avatar = data.avatarProfile;
+        this.userId = data.userId;
     }
     // возвращяем объект с данными профиля
     getUserInfo = () => {
@@ -15,5 +17,7 @@ export default class UserInfo {
     setUserInfo(inputValues) {
         this._name.textContent = inputValues.name;
         this._about.textContent = inputValues.about;
+        this._avatar.src = inputValues.avatar;
+        this.userId = inputValues._id;
     }
 }
