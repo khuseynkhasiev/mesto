@@ -87,10 +87,10 @@ api.getAllPromise().then(data => {
   // Добавляем новую карточку
   const popupWithFormAdd = new PopupWithForm({
     handleFormSubmit: (unputValues) => {
+      popupAddButton.textContent = 'Сохранение...'
       // получаем колбэком данные из инпутов
       api.postNewCard(unputValues)
         .then((data) => {
-          popupAddButton.textContent = 'Сохранение...'
           section.addItem(createCard(data));
           popupWithFormAdd.close();
         })
@@ -124,10 +124,10 @@ api.getAllPromise().then(data => {
 const popupWithFormEdit = new PopupWithForm({
   // получаем колбэком данные из инпутов
   handleFormSubmit: (unputValues) => {
+    popupEditButton.textContent = 'Сохранение...'
     // подставляем данные в профиль на сервере
     api.patchProfileInfo(unputValues)
       .then((profileInfo) => {
-        popupEditButton.textContent = 'Сохранение...'
         userInfo.setUserInfo(profileInfo);
         popupWithFormEdit.close();
       })
@@ -192,9 +192,9 @@ const createCard = (item) => {
 //меняем аватарку и подгружаем новую с сервера
 const popupAvatar = new PopupWithForm({
     handleFormSubmit: (unputValues) => {
+      popupProfileAvatarButton.textContent = 'Сохранение...';
       api.patchAvatarProfile(unputValues.link)
         .then((data) => {
-          popupProfileAvatarButton.textContent = 'Сохранение...';
 
           userInfo.setUserInfo(data);
           popupAvatar.close();
